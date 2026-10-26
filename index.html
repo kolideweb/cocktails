@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Ultimate Home Bar Menu</title>
+    <style>
+        :root {
+            --bg-color: #121212;
+            --card-bg: #1e1e1e;
+            --accent-color: #ff4757;
+            --text-color: #ffffff;
+            --text-muted: #a4b0be;
+            --border-color: #2f3542;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+        body { background-color: var(--bg-color); color: var(--text-color); padding: 20px; line-height: 1.6; }
+        .container { max-width: 1200px; margin: 0 auto; }
+        header { text-align: center; margin-bottom: 40px; padding: 20px 0; border-bottom: 1px solid var(--border-color); }
+        header h1 { font-size: 2.5rem; margin-bottom: 10px; color: #ff6b81; }
+        header p { color: var(--text-muted); font-size: 1.1rem; }
+        .search-box { width: 100%; max-width: 500px; margin: 20px auto 0 auto; display: block; padding: 12px 20px; font-size: 1rem; border-radius: 25px; border: 1px solid var(--border-color); background: #2f3542; color: #fff; text-align: center; }
+        .search-box:focus { outline: none; border-color: var(--accent-color); }
+        .section-title { font-size: 1.8rem; margin: 40px 0 20px 0; color: #ffa502; border-left: 4px solid #ffa502; padding-left: 10px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
+        .card { background-color: var(--card-bg); border: 1px solid var(--border-color); border-radius: 12px; padding: 20px; transition: transform 0.2s, box-shadow 0.2s; display: flex; flex-direction: column; justify-content: space-between; }
+        .card:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(0,0,0,0.5); }
+        .card-header { margin-bottom: 12px; }
+        .card-title { font-size: 1.2rem; font-weight: bold; color: #fff; margin-bottom: 5px; }
+        .tag { display: inline-block; background: var(--border-color); color: var(--text-muted); padding: 3px 8px; font-size: 0.75rem; border-radius: 4px; font-weight: bold; text-transform: uppercase; margin-right: 5px; }
+        .tag.creamy { background: #ced6e0; color: #2f3542; }
+        .tag.fruity { background: #ff4757; color: #fff; }
+        .tag.bitter { background: #ffa502; color: #fff; }
+        .tag.energy { background: #2ed573; color: #fff; }
+        .ingredients { margin: 15px 0; padding-left: 20px; color: var(--text-muted); font-size: 0.9rem; }
+        .instructions { font-size: 0.85rem; color: #bdc581; font-style: italic; margin-top: 10px; border-top: 1px dashed var(--border-color); padding-top: 10px; }
+        .hidden { display: none !important; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>Custom Cocktail Lounge Menu</h1>
+        <p>Featuring 50 drinks custom-mapped to your exact bar inventory.</p>
+        <input type="text" id="searchInput" class="search-box" placeholder="🔍 Search by ingredient (e.g. Midori, Tequila, Milk)..." onkeyup="filterCocktails()">
+    </header>
+
+    <!-- SECTION 1 -->
+    <div class="section-title">Section 1: Creamy Milk & Coffee Treats</div>
+    <div class="grid">
+        <div class="card" data-ingredients="vodka kahlua milk white russian">
+            <div>
+                <div class="card-header"><div class="card-title">1. Classic White Russian</div><span class="tag creamy">Creamy</span></div>
+                <ul class="ingredients"><li>45ml Absolut Vodka</li><li>30ml Kahlúa</li><li>Top with Milk</li></ul>
+            </div>
+            <p class="instructions">Build over ice in a short glass. Layer milk last and stir gently.</p>
+        </div>
+        <div class="card" data-ingredients="baileys kahlua vodka milk espresso shake">
+            <div>
+                <div class="card-header"><div class="card-title">2. Espresso Crème Shake</div><span class="tag creamy">Creamy</span><span class="tag energy">Coffee</span></div>
+                <ul class="ingredients"><li>30ml Baileys Espresso Crème</li><li>30ml Kahlúa</li><li>30ml Vodka</li><li>60ml Milk</li></ul>
+            </div>
+            <p class="instructions">Shake dynamically with ice until hyper-frosted. Strain into glass.</p>
+        </div>
+        <div class="card" data-ingredients="dark rum kahlua milk midnight velvet">
+            <div>
+                <div class="card-header"><div class="card-title">3. Midnight Velvet</div><span class="tag creamy">Creamy</span></div>
+                <ul class="ingredients"><li>45ml Dark Rum</li><li>30ml Kahlúa</li><li>Top with Cold Milk</li></ul>
+            </div>
+            <p class="instructions">Stir cleanly over ice in a highball glass to blend coffee and molasses.</p>
+        </div>
+        <div class="card" data-ingredients="midori malibu baileys milk blind melon shake">
+            <div>
+                <div class="card-header"><div class="card-title">4. Blind Melon Shake</div><span class="tag fruity">Fruity</span><span class="tag creamy">Creamy</span></div>
+                <ul class="ingredients"><li>30ml Midori</li><li>30ml Malibu</li><li>15ml Baileys Original</li><li>60ml Milk</li></ul>
+            </div>
+            <p class="instructions">Shake with ice. Tastes exactly like a gourmet creamy melon melon pop.</p>
+        </div>
+        <div class="card" data-ingredients="kahlua coca cola milk black russian cola float">
+            <div>
+                <div class="card-header"><div class="card-title">5. Kahlúa Cola Float</div><span class="tag creamy">Creamy</span></div>
+                <ul class="ingredients"><li>45ml Kahlúa</li><li>60ml Milk</li><li>Top with Coca-Cola</li></ul>
+            </div>
+            <p class="instructions">Build over ice, pouring cola slow to generate a dynamic creamy foam crown.</p>
+        </div>
+        <div class="card" data-ingredients="baileys vodka lime milk citrus dream">
+            <div>
+                <div class="card-header"><div class="card-title">6. Citrus Cream Dream</div><span class="tag creamy">Creamy</span></div>
+                <ul class="ingredients"><li>30ml Baileys Original</li><li>30ml Absolut Vodka Lime</li><li>60ml Milk</li></ul>
+            </div>
+            <p class="instructions">Shake very fast with lots of ice and serve immediately like a lime slice treat.</p>
+        </div>
+        <div class="card" data-ingredients="white rum dark rum kahlua milk double rum mocha">
+            <div>
+                <div class="card-header"><div class="card-title">7. Double Rum Mocha</div><span class="tag creamy">Creamy</span></div>
+                <ul class="ingredients"><li>20ml White Rum & 20ml Dark Rum</li><li>30ml Kahlúa</li><li>Top with Milk</li></ul>
+            </div>
+            <p class="instructions">Mix rums and Kahlúa together with ice, then flood with cold fresh milk.</p>
+        </div>
+        <div class="card" data-ingredients="baileys espresso creme milk cafe frappe">
+            <div>
+                <div class="card-header"><div class="card-title">8. Espresso Crème Frappé</div><span class="tag creamy">Creamy</span><span class="tag energy">Coffee</span></div>
+                <ul class="ingredients"><li>60ml Baileys Espresso Crème</li><li>90ml Fresh Milk</li><li>Crushed Ice</li></ul>
+            </div>
+            <p class="instructions">Blend or whip hard with crushed ice until it hits a rich coffee slush consistency.</p>
+        </div>
+        <div class="card" data-ingredients="malibu kahlua milk coco cafe">
+            <div>
+                <div class="card-header"><div class="card-title">9. Coco-Café Latte</div><span class="tag creamy">Creamy</span></div>
+                <ul class="ingredients"><li>30ml Malibu Rum</li><li>30ml Kahlúa</li><li>Top with Milk</li></ul>
+            </div>
+            <p class="ingredients">Pour spirits over ice blocks and fill cleanly with rich whole milk.</p>
+        </div>
+        <div class="card" data-ingredients="espolon tequila kahlua milk mexican white russian">
+            <div>
+                <div class="card-header"><div class="card-title">10. Mexican Sombrero</div><span class="tag creamy">Creamy</span></div>
+                <ul class="ingredients"><li>45ml Espolòn Tequila</li><li>30ml Kahlúa</li><li>Top with Milk</li></ul>
+            </div>
+            <p class="instructions">Tequila replaces vodka here for an earthy agave twist on a creamy standard.</p>
+        </div>
+    </div>
+
+    <!-- SECTION 2 -->
+    <div class="section-title">Section 2: Tequila & Agave Dynamics</div>
+    <div class="grid">
+        <div class="card" data-ingredients="espolon tequila orange juice cranberry tequila sunrise">
+            <div>
+                <div class="card-header"><div class="card-title">11. Espolòn Tequila Sunrise</div><span class="tag fruity">Fruity</span></div>
+                <ul class="ingredients"><li>45ml Espolòn Tequila</li><li>Top with Orange Juice</li><li>15ml Cranberry (Float)</li></ul>
+            </div>
+            <p class="instructions">Drizzle cranberry inside the glass edge last to settle into a striking horizon look.</p>
+        </div>
+        <div class="card" data-ingredients="espolon tequila kahlua brave bull">
+            <div>
+                <div class="card-header"><div class="card-title">12. The Brave Bull</div><span class="tag">Bold</span></div>
+                <ul class="ingredients"><li>45ml Espolòn Tequila</li><li>30ml Kahlúa</li></ul>
+            </div>
+            <p class="instructions">Stir directly with large block ice inside a rocks glass. Dark and punchy.</p>
+        </div>
+        <div class="card" data-ingredients="espolon tequila baileys original irish cactus">
+            <div>
+                <div class="card-header"><div class="card-title">13. The Irish Cactus</div><span class="tag creamy">Creamy</span></div>
+                <ul class="ingredients"><li>45ml Espolòn Tequila</li><li>30ml Baileys Original</li></ul>
+            </div>
+            <p class="instructions">Build directly over ice. Rich Irish cream matches brilliantly with agave.</p>
+        </div>
+        <div class="card" data-ingredients="espolon tequila midori mountain dew green aztec">
+            <div>
+                <div class="card-header"><div class="card-title">14. The Green Aztec</div><span class="tag fruity">Fruity</span><span class="tag energy">Energy</span></div>
+                <ul class="ingredients"><li>30ml Espolòn Tequila</li><li>30ml Midori</li><li>Top with Mountain Dew</li></ul>
+            </div>
+            <p class="instructions">Build over cracked ice. Melon and electric citrus blend into a radiant neon green.</p>
+        </div>
+        <div class="card" data-ingredients="espolon tequila campari coca cola lemon mexican el diablo">
+            <div>
+                <div class="card-header"><div class="card-title">15. Tequila Diablo Twist</div><span class="tag bitter">Bitter</span></div>
+                <ul class="ingredients"><li>45ml Espolòn Tequila</li><li>15ml Campari</li><li>Top with Coca-Cola & Lemon</li></ul>
+            </div>
+            <p class="instructions">Add spirits to glass over ice, squeeze lemon, fill to top with dark cola.</p>
+        </div>
+        <div class="card" data-ingredients="espolon tequila absolut vodka lime cranberry juice matador lime">
+            <div>
+                <div class="card-header"><div class="card-title">16. Crimson Matador</div><span class="tag fruity">Fruity</span></div>
+                <ul class="ingredients"><li>30ml Espolòn Tequila</li><li>30ml Absolut Vodka Lime</li><li>Top with Cranberry</li></ul>
+            </div>
+            <p class="instructions">Shake spirits with ice, dump into short glass and wash with tart cranberry.</p>
+        </div>
+        <div class="card" data-ingredients="espolon tequila malibu orange juice beach agave">
+            <div>
+                <div class="card-header"><div class="card-title">17. Beach Agave</div><span class="tag fruity">Fruity</span></div>
+                <ul class="ingredients"><li>30ml Espolòn Tequila</li><li>30ml Malibu Coconut</li><li>Top with Orange Juice</li></ul>
+            </div>
+            <p class="instructions">Pour into a tall glass packed with ice. Smooth, crisp, and tropical.</p>
+        </div>
+        <div class="card" data-ingredients="espolon tequila lemon cranberry juice pink espolon">
+            <div>
+                <div class="card-header"><div class="card-title">18. Pink Espolòn Sizzler</div><span class="tag fruity">Fruity</span></div>
+                <ul class="ingredients"><li>45ml Espolòn Tequila</li><li>15ml Lemon Juice</li><li>Top with Cranberry Juice</li></ul>
+            </div>
+            <p class="instructions">Shake tequila and lemon juice, pour over ice, layer cranberry to complete.</p>
+        </div>
+        <div class="card" data-ingredients="espolon tequila white rum lemon mountain dew agave light">
+            <div>
+                <div class="card-header"><div class="card-title">19. Agave Lightning</div><span class="tag energy">Energy</span></div>
+                <ul class="ingredients"><li>30ml Espolòn Tequila</li><li>15ml White Rum</li><li>Lemon & Mountain Dew</li></ul>
+            </div>
+            <p class="instructions">Combine inside a tall highball glass with crushed ice. Hyper-clean citrus finish.</p>
+        </div>
+        <div class="card" data-ingredients="espolon tequila baileys espresso creme mocha tequila">
+            <div>
+                <div class="card-header"><div class="card-title">20. Speeding Bullet</div><span class="tag creamy">Creamy</span><span class="tag energy">Coffee</span></div>
+                <ul class="ingredients"><li>30ml Espolòn Tequila</li><li>30ml Baileys Espresso Crème</li></ul>
+            </div>
+            <p class="instructions">Stir with ice cubes to achieve full frosty dilution. Earthy yet sweet.</p>
+        </div>
+    </div>
+
+    <!-- SECTION 3 -->
+    <div class="section-title">Section 3: Tropical Paradise & Malibu Blends</div>
+    <div class="grid">
+        <div class="card" data-ingredients="malibu midori orange juice cranberry neon sunset">
+            <div>
+                <div class="card-header"><div class="card-title">21. Neon Sunset Highball</div><span class="tag fruity">Fruity</span></div>
+                <ul class="ingredients"><li>30ml Malibu Coconut Rum</li><li>30ml Midori</li><li>Orange & Cranberry Juice</li></ul>
+            </div>
+            <p class="instructions">Pour juices split halfway to view the stunning red-to-orange gradient contrast.</p>
+        </div>
+        <div class="card" data-ingredients="white rum dark rum malibu orange juice cranberry caribbean punch">
+            <div>
+                <div class="card-header"><div class="card-title">22. Caribbean Triple-Rum Punch</div><span class="tag fruity">Fruity</span></div>
+                <ul class="ingredients"><li>30ml White Rum & 15ml Dark Rum</li><li>30ml Malibu Coconut</li><li>Orange & Cranberry Juice</li></ul>
+            </div>
+            <p class="instructions">Shake white rum, Malibu, and juices. Strain over ice; float dark rum over top.</p>
+        </div>
+        <div class="card" data-ingredients="malibu mountain dew lemon malibu dew">
+            <div>
+                <div class="card-header"><div class="card-title">23. Malibu Dew Sizzler</div><span class="tag energy">Energy</span></div>
+                <ul class="ingredients"><li>45ml Malibu Coconut Rum</li><li>Top with Mountain Dew</li><li>Fresh Lemon Squeeze</li></ul>
+            </div>
+            <p class="instructions">Build over massive ice elements. Fast, sweet, and highly refreshing.</p>
+        </div>
+        <div class="card" data-ingredients="white rum lemon daiquiri substitute">
+            <div>
+                <div class="card-header"><div class="card-title">24. Backyard Lemon Daiquiri</div><span class="tag">Classic</span></div>
+                <ul class="ingredients"><li>60ml White Rum</li><li>30ml Fresh Lemon Juice</li><li>*Best with pinch of sugar</li></ul>
+            </div>
+            <p class="instructions">Shake fiercely with ice blocks and strain into glass. A crisp sour classic.</p>
+        </div>
+        <div class="card" data-ingredients="dark rum mountain dew lemon dark dew">
+            <div>
+                <div class="card-header"><div class="card-title">25. The Dark Dew</div><span class="tag energy">Energy</span></div>
+                <ul class="ingredients"><li>45ml Dark Rum</li><li>Top with Mountain Dew</li><li>Lemon Wedge</li></ul>
+            </div>
+            <p class="instructions">Pour rich dark rum over ice, flood with Dew, and activate with a lemon squeeze.</p>
+        </div>
+        <div class="card" data-ingredients="dark rum white rum coca cola lemon cuba libre">
+            <div>
+                <div class="card-header"><div class="card-title">26. Cuba Libre Double-Take</div><span class="tag">Classic</span></div>
+                <ul class="ingredients"><li>30ml White Rum & 30ml Dark Rum</li><li>Top with Coca-Cola</li><li>Squeeze of Lemon</li></ul>
+            </div>
+            <p class="ingredients">Build in a tall glass with ice. Deep rum molasses meets crisp cola carbonation.</p>
+        </div>
+        <div class="card" data-ingredients="malibu cranberry juice lemon coco beach breeze">
+            <div>
+                <div class="card-header"><div class="card-title">27. Coco Beach Breeze</div><span class="tag fruity">Fruity</span></div>
+                <ul class="ingredients"><li>45ml Malibu Coconut Rum</li><li>Top with Cranberry Juice</li><li>Lemon Squeeze</li></ul>
+            </div>
+            <p class="instructions">Pour Malibu into glass with ice, fill cleanly with deep tart cranberry juice.</p>
+        </div>
+        <div class="card" data-ingredients="white rum midori orange juice melon rum runner">
+            <div>
+                <div class="card-header"><div class="card-title">28. Tropical Melon Runner</div><span class="tag fruity">Fruity</span></div>
+                <ul class="ingredients"><li>30ml White Rum</li><li>30ml Midori Melon Liqueur</li><li>Top with Orange Juice</li></ul>
+            </div>
+            <p class="instructions">Stir cleanly with ice. Honeydew melon notes blend beautifully with cane sugar and citrus.</p>
+        </div>
+        <div class="card" data-ingredients="malibu coca cola coco cola">
+            <div>
+                <div class="card-header"><div class="card-title">29. Coco-Cola Classic</div><span class="tag">Simple</span></div>
+                <ul class="ingredients"><li>50ml Malibu Coconut Rum</li><li>Top with Coca-Cola</li></ul>
+            </div>
+            <p class="instructions">Simple beach highball. Coconut aroma elevates ordinary dark cola soda notes.</p>
+        </div>
+        <div class="card" data-ingredients="dark rum midori cranberry island shadow">
+            <div>
+                <div class="card-header"><div class="card-title">30. Island Shadow</div><span class="tag bitter">Complex</span></div>
+                <ul class="ingredients"><li>30ml Dark Rum</li><li>30ml Midori</li><li>Top with Cranberry Juice</li></ul>
+            </div>
+            <p class="instructions">Build over crushed ice. Intensely colorful, complexly balanced sweetness.</p>
+        </div>
+    </div>
+
+    <!-- SECTION 4 -->
+    <div class="section-title">Section 4: Sophisticated Bitter & Gin Classics</div>
+    <div class="grid">
+        <div class="card" data-ingredients="gordons pink gin campari orange juice negroni">
+            <div>
+                <div class="card-header"><div class="card-title">31. Pink Citrus Negroni</div><span class="tag bitter">Bitter</span></div>
+                <ul class="ingredients"><li>30ml Gordon's Pink Gin</li><li>30ml Campari</li><li>30ml Orange Juice</li></ul>
+            </div>
+            <p class="instructions">Stir with ice cubes to dilute slightly. OJ replaces sweet vermouth perfectly.</p>
+        </div>
+        <div class="card" data-ingredients="campari orange juice garibaldi">
+            <div>
+                <div class="card-header"><div class="card-title">32. Classic Garibaldi</div><span class="tag bitter">Bitter</span><span class="tag fruity">Fruity</span></div>
+                <ul class="ingredients"><li>45ml Campari</li><li>Top with Fresh Orange Juice</li></ul>
+            </div>
+            <p class="instructions">Whip or froth the OJ first if possible to form a gorgeous velvety cloud top layer.</p>
+        </div>
+        <div class="card" data-ingredients="absolut vodka lime campari cranberry juice lemon crimson bitter">
+            <div>
+                <div class="card-header"><div class="card-title">33. Crimson Bitter Crisp</div><span class="tag bitter">Bitter</span></div>
+                <ul class="ingredients"><li>45ml Absolut Vodka Lime</li><li>15ml Campari</li><li>Cranberry Juice & Lemon</li></ul>
+            </div>
+            <p class="instructions">Build over ice. Deep complex berry bitterness with a crisp clear lime punch finish.</p>
+        </div>
+        <div class="card" data-ingredients="gordons pink gin lemon cranberry clear sunset">
+            <div>
+                <div class="card-header"><div class="card-title">34. Pink Gin Sunset Sizzler</div><span class="tag fruity">Fruity</span></div>
+                <ul class="ingredients"><li>45ml Gordon's Pink Gin</li><li>15ml Lemon Juice</li><li>Top with Cranberry Juice</li></ul>
+            </div>
+            <p class="instructions">Shake gin and lemon juice, pour over ice, fill completely with bright cranberry.</p>
+        </div>
+        <div class="card" data-ingredients="gordons pink gin campari mountain dew neon negroni">
+            <div>
+                <div class="card-header"><div class="card-title">35. Electric Pink Bitter</div><span class="tag bitter">Bitter</span><span class="tag energy">Energy</span></div>
+                <ul class="ingredients"><li>30ml Gordon's Pink Gin</li><li>15ml Campari</li><li>Top with Mountain Dew</li></ul>
+            </div>
+            <p class="instructions">Build over cracked ice. Sweet electric lemon-lime cuts through herbal bitter oils.</p>
+        </div>
+        <div class="card" data-ingredients="gordons pink gin coca cola lemon gin cola">
+            <div>
+                <div class="card-header"><div class="card-title">36. Pink Gin & Dark Cola</div><span class="tag">Simple</span></div>
+                <ul class="ingredients"><li>50ml Gordon's Pink Gin</li><li>Top with Coca-Cola</li><li>Squeeze of Lemon</li></ul>
+            </div>
+            <p class="instructions">Pour gin into ice, top up with crisp cola, squeeze fresh lemon element to finish.</p>
+        </div>
+        <div class="card" data-ingredients="campari cranberry juice lemon bitter breeze">
+            <div>
+                <div class="card-header"><div class="card-title">37. Campari Crimson Breeze</div><span class="tag bitter">Bitter</span></div>
+                <ul class="ingredients"><li>45ml Campari</li><li>Top with Cranberry Juice</li><li>Lemon Squeeze</li></ul>
+            </div>
+            <p class="instructions">A tart, deeply bitter afternoon highball. Serve over lots of clean ice blocks.</p>
+        </div>
+        <div class="card" data-ingredients="absolut vodka campari orange juice sunset reviver">
+            <div>
+                <div class="card-header"><div class="card-title">38. Bitter Sunset Reviver</div><span class="tag bitter">Bitter</span><span class="tag fruity">Fruity</span></div>
+                <ul class="ingredients"><li>45ml Absolut Vodka (Normal)</li><li>15ml Campari</li><li>Top with Orange Juice</li></ul>
+            </div>
+            <p class="instructions">Build cleanly inside highball glass over ice. Fruity base with an earthy back note.</p>
+        </div>
+        <div class="card" data-ingredients="gordons pink gin orange juice cranberry sweet horizon">
+            <div>
+                <div class="card-header"><div class="card-title">39. Pink Horizon Mist</div><span class="tag fruity">Fruity</span></div>
+                <ul class="ingredients"><li>45ml Gordon's Pink Gin</li><li>60ml Orange Juice</li><li>Top with Cranberry</li></ul>
+            </div>
+            <p class="instructions">Shake gin and orange juice with ice. Strain, then float crimson cranberry juice over top.</p>
+        </div>
+        <div class="card" data-ingredients="gordons pink gin white rum lemon double botanic">
+            <div>
+                <div class="card-header"><div class="card-title">40. Double Botanic Sour</div><span class="tag">Strong</span></div>
+                <ul class="ingredients"><li>30ml Gordon's Pink Gin</li><li>30ml White Rum</li><li>30ml Fresh Lemon Juice</li></ul>
+            </div>
+            <p class="instructions">Shake with raw power with ice cubes. Crisp, botanical, and strongly punchy.</p>
+        </div>
+    </div>
+
+    <!-- SECTION 5 -->
+    <div class="section-title">Section 5: Highball Favorites, Energy Drinks & Party Shots</div>
+    <div class="grid">
+        <div class="card" data-ingredients="gordons pink gin cranberry v drink pink v bomb">
+            <div>
+                <div class="card-header"><div class="card-title">41. The Pink V-Bomb</div><span class="tag energy">Energy</span></div>
+                <ul class="ingredients"><li>45ml Gordon's Pink Gin</li><li>15ml Cranberry Juice</li><li>Top with V Energy Drink</li></ul>
+            </div>
+            <p class="instructions">Build over crushed ice. Pour V energy slowly to lock in pristine fizz dynamics.</p>
+        </div>
+        <div class="card" data-ingredients="absolut vodka lime orange juice mountain dew citrus dew over">
+            <div>
+                <div class="card-header"><div class="card-title">42. Citrus Dew-Over Highball</div><span class="tag energy">Energy</span></div>
+                <ul class="ingredients"><li>45ml Absolut Vodka Lime</li><li>15ml Orange Juice</li><li>Top with Mountain Dew</li></ul>
+            </div>
+            <p class="instructions">Pack highball glass with ice, assemble ingredients, stir once to settle bubbles.</p>
+        </div>
+        <div class="card" data-ingredients="absolut vodka lime mountain dew vodkalime dew">
+            <div>
+                <div class="card-header"><div class="card-title">43. Vodka Lime Mountain High</div><span class="tag energy">Energy</span></div>
+                <ul class="ingredients"><li>50ml Absolut Vodka Lime</li><li>Top with Mountain Dew</li></ul>
+            </div>
+            <p class="instructions">A modern club favorite. Fast, crisp lime oils balanced by bright citrus soda.</p>
+        </div>
+        <div class="card" data-ingredients="midori absolut vodka lime v drink radioactive v">
+            <div>
+                <div class="card-header"><div class="card-title">44. The Radioactive V</div><span class="tag energy">Energy</span><span class="tag fruity">Fruity</span></div>
+                <ul class="ingredients"><li>30ml Midori</li><li>30ml Absolut Vodka Lime</li><li>Top with V Energy Drink</li></ul>
+            </div>
+            <p class="instructions">Pour over ice cubes and stir. Glows bright green and packs an energetic punch.</p>
+        </div>
+        <div class="card" data-ingredients="midori white rum lemon japanese slipper">
+            <div>
+                <div class="card-header"><div class="card-title">45. Backyard Japanese Slipper</div><span class="tag fruity">Fruity</span></div>
+                <ul class="ingredients"><li>45ml Midori</li><li>45ml White Rum</li><li>30ml Fresh Lemon Juice</li></ul>
+            </div>
+            <p class="instructions">Shake intensely with ice cubes and double strain into glass. Luscious melon sour.</p>
+        </div>
+        <div class="card" data-ingredients="absolut vodka cranberry orange juice madras">
+            <div>
+                <div class="card-header"><div class="card-title">46. Classic Madras Highball</div><span class="tag fruity">Fruity</span></div>
+                <ul class="ingredients"><li>45ml Absolut Vodka (Normal)</li><li>90ml Cranberry Juice</li><li>30ml Orange Juice</li></ul>
+            </div>
+            <p class="instructions">Build directly over ice elements. Classic crowd-pleasing tart fruit profile.</p>
+        </div>
+        <div class="card" data-ingredients="midori baileys springbok shot">
+            <div>
+                <div class="card-header"><div class="card-title">47. The Springbok Shot</div><span class="tag creamy">Creamy</span><span class="tag">Shot</span></div>
+                <ul class="ingredients"><li>15ml Midori</li><li>15ml Baileys Original</li></ul>
+            </div>
+            <p class="instructions">Pour Midori into shot glass. Float Baileys gently over the back of a spoon.</p>
+        </div>
+        <div class="card" data-ingredients="kahlua baileys baby stout shot">
+            <div>
+                <div class="card-header"><div class="card-title">48. The Baby Stout Shot</div><span class="tag creamy">Creamy</span><span class="tag">Shot</span></div>
+                <ul class="ingredients"><li>20ml Kahlúa</li><li>10ml Baileys (Original or Espresso)</li></ul>
+            </div>
+            <p class="instructions">Pour Kahlúa first. Carefully float Baileys top layer to simulate a tiny pint of stout beer.</p>
+        </div>
+        <div class="card" data-ingredients="absolut vodka cranberry lemon cape codder">
+            <div>
+                <div class="card-header"><div class="card-title">49. Cape Codder Twist</div><span class="tag fruity">Fruity</span></div>
+                <ul class="ingredients"><li>60ml Absolut Vodka Lime</li><li>Top with Cranberry Juice</li><li>Fresh Lemon Squeeze</li></ul>
+            </div>
+            <p class="instructions">Build inside short rocks glass with ice. Tart, bright, clean, and highly sessionable.</p>
+        </div>
+        <div class="card" data-ingredients="vodka midori gin orange juice cranberry v drink punch group">
+            <div>
+                <div class="card-header"><div class="card-title">50. Auckland Backyard Party Punch</div><span class="tag fruity">Fruity</span><span class="tag">Group</span></div>
+                <ul class="ingredients"><li>120ml Vodka, 120ml Midori, 120ml Pink Gin</li><li>500ml OJ & 500ml Cranberry</li><li>Top with 1 Can of V Drink or Dew</li></ul>
+            </div>
+            <p class="instructions">Combine spirits and juices in a huge bowl with ice blocks. Add soda/V right before serving.</p>
+        </div>
+    </div>
+</div>
+
+<script>
+function filterCocktails() {
+    let input = document.getElementById('searchInput').value.toLowerCase();
+    let cards = document.getElementsByClassName('card');
+    
+    for (let i = 0; i < cards.length; i++) {
+        let ingredients = cards[i].getAttribute('data-ingredients').toLowerCase();
+        let title = cards[i].querySelector('.card-title').innerText.toLowerCase();
+        
+        if (ingredients.includes(input) || title.includes(input)) {
+            cards[i].classList.remove('hidden');
+        } else {
+            cards[i].classList.add('hidden');
+        }
+    }
+}
+</script>
+
+</body>
+</html>
