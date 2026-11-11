@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Home Bar - 100 Cocktail Recipes</title>
+    <title>My Home Bar - 100 Cocktail Recipes with Exact Measurements</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -91,7 +91,7 @@
 
         .recipe-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
             gap: 20px;
             margin-top: 20px;
         }
@@ -125,7 +125,7 @@
         }
 
         .recipe-title {
-            font-size: 1.4rem;
+            font-size: 1.35rem;
             font-weight: 600;
             color: var(--text-main);
             margin: 4px 0 10px;
@@ -173,6 +173,11 @@
             letter-spacing: 0.5px;
         }
 
+        .recipe-section ul {
+            margin-left: 18px;
+            font-size: 0.95rem;
+        }
+
         .recipe-section p {
             font-size: 0.95rem;
         }
@@ -197,7 +202,7 @@
 <div class="container">
     <header>
         <h1>🍸 My Home Bar Cocktails</h1>
-        <p>100 Tailored Recipes Crafted From Your Personal Inventory & Mixers</p>
+        <p>100 Tailored Recipes with Exact Measurements & Pro Methods</p>
     </header>
 
     <div class="controls">
@@ -223,136 +228,414 @@
 
     <div class="stats-count" id="recipeCount">Showing 100 recipes</div>
 
-    <div class="recipe-grid" id="recipeGrid">
-        <!-- JS will populate cards here -->
-    </div>
+    <div class="recipe-grid" id="recipeGrid"></div>
 
     <footer>
-        <p>Ready for GitHub Pages | Cheers! 🥂</p>
+        <p>GitHub Pages Ready | Cheers! 🥂</p>
     </footer>
 </div>
 
 <script>
 const recipes = [
-    // 1-10
-    { id: 1, name: "Classic Gin & Tonic", base: "Gin", alcohol: "Tanqueray / Scapegrace Dry Gin", mixers: "7Up/Tonic (SodaStream), Fresh Lemon/Lime", glass: "Highball / Copa Glass", season: "Summer", origin: "Invented by British East India Company officers in India during the 1700s to make anti-malarial quinine medicinal water pleasant.", method: "Build over cubed ice, pour gin, top with fizzy tonic or soda, stir gently, and garnish with fresh lemon or lime slice." },
-    { id: 2, name: "Pink Gin Fizz", base: "Gin", alcohol: "Gordon's Premium Pink Gin", mixers: "7Up (SodaStream), Fresh Lemon Juice", glass: "Highball Glass", season: "Spring / Summer", origin: "A refreshing modern adaptation of 19th-century Royal Navy pink gin rations, highlighting sweet red berry botanicals.", method: "Shake pink gin and lemon juice with ice, strain over fresh ice, and top with chilled 7Up or soda." },
-    { id: 3, name: "Espresso Martini", base: "Vodka", alcohol: "Scapegrace / Smirnoff No. 21 Vodka, Kahlúa", mixers: "Fresh Coffee / Espresso, Simple Syrup", glass: "Coupe / Martini Glass", season: "Autumn / Winter", origin: "Created by Dick Bradsell in 1983 at Soho Brasserie, London, after a famous model asked for a drink that would 'wake me up'.", method: "Vigorously shake vodka, Kahlúa, and coffee with ice until frothy. Strain into a chilled glass and garnish with coffee beans." },
-    { id: 4, name: "White Russian", base: "Vodka", alcohol: "Smirnoff No. 21 Vodka, Kahlúa", mixers: "Whole Milk / Cream", glass: "Rocks Glass", season: "Winter", origin: "Emerged in the 1960s when cream was added to a Black Russian, later achieving cult status in 'The Big Lebowski'.", method: "Build over ice in an Old Fashioned glass, top with fresh whole milk or cream, and stir lightly." },
-    { id: 5, name: "Black Russian", base: "Vodka", alcohol: "Smirnoff No. 21 Vodka, Kahlúa", mixers: "None / Simple Syrup", glass: "Rocks Glass", season: "Autumn / Winter", origin: "Created in 1949 by Belgian bartender Gustave Tops at the Hotel Metropole in Brussels for the U.S. Ambassador to Luxembourg.", method: "Stir vodka and Kahlúa with ice in a rocks glass until thoroughly chilled." },
-    { id: 6, name: "Vanilla Espresso Cloud", base: "Vodka", alcohol: "Absolut Vanilla Vodka, Kahlúa", mixers: "Fresh Coffee, Whole Milk", glass: "Martini / Coupe Glass", season: "Autumn / Winter", origin: "A sweet, velvety twist on the classic 1980s London recipe using smooth vanilla vodka to round out dark coffee roastiness.", method: "Shake vanilla vodka, Kahlúa, espresso, and a dash of milk with ice until thick foam forms. Double strain into chilled glass." },
-    { id: 7, name: "Tommy's Tequila Lime Margarita", base: "Tequila", alcohol: "Espolòn Tequila Blanco", mixers: "Fresh Lemon/Lime Juice, Simple Syrup", glass: "Rocks Glass", season: "Summer", origin: "Created by Julio Bermejo in the early 1990s at Tommy's Mexican Restaurant in San Francisco to emphasize pure agave flavor.", method: "Shake tequila, fresh lemon/lime juice, and simple syrup with ice. Fine strain over fresh ice into a salted rim glass." },
-    { id: 8, name: "Paloma Sparkler", base: "Tequila", alcohol: "Espolòn Tequila Blanco", mixers: "Orange Juice, Cranberry Juice, Soda Stream", glass: "Highball Glass", season: "Summer", origin: "A vibrant fruity variation of Mexico's most beloved highball cocktail, traditionally made with agave and citrus soda.", method: "Build tequila, orange juice, and cranberry juice in a tall ice-filled glass. Top with sparkling soda and stir." },
-    { id: 9, name: "Midori Sour", base: "Liqueur", alcohol: "Midori Melon Liqueur", mixers: "Fresh Lemon Juice, 7Up (SodaStream)", glass: "Highball Glass", season: "Spring / Summer", origin: "Debuted in the late 1970s after Midori's world launch party at Studio 54 in NYC, becoming an iconic vibrant green staple.", method: "Shake Midori with lemon juice and ice. Strain into a ice-filled glass, top with 7Up, and garnish with lemon wheel." },
-    { id: 10, name: "Japanese Slipper", base: "Liqueur", alcohol: "Midori Melon Liqueur", mixers: "Fresh Lemon Juice, Orange Juice", glass: "Coupe Glass", season: "Summer", origin: "Created in 1984 by Jean-Paul Bourguignon at Mietta's in Melbourne, Australia using equal parts simple components.", method: "Shake Midori, orange juice, and fresh lemon juice with ice until well chilled. Strain into a chilled cocktail glass." },
+    { id: 1, name: "Classic Gin & Tonic", base: "Gin", glass: "Highball / Copa Glass", season: "Summer", origin: "Invented by British East India Company officers in India during the 1700s to make anti-malarial quinine medicinal water pleasant.", 
+      ingredients: ["60 ml (2 oz) Tanqueray or Scapegrace Dry Gin", "120 ml (4 oz) 7Up or Tonic Water (SodaStream)", "15 ml (0.5 oz) Fresh Lemon/Lime Juice", "Fresh lime wheel for garnish"], 
+      method: "Build over cubed ice in a copa glass, pour gin and citrus juice, top with fizzy tonic or 7Up, stir gently, and garnish." },
+    
+    { id: 2, name: "Pink Gin Fizz", base: "Gin", glass: "Highball Glass", season: "Spring / Summer", origin: "A refreshing modern adaptation of 19th-century Royal Navy pink gin rations, highlighting sweet red berry botanicals.", 
+      ingredients: ["60 ml (2 oz) Gordon's Premium Pink Gin", "22.5 ml (0.75 oz) Fresh Lemon Juice", "15 ml (0.5 oz) Simple Syrup", "90 ml (3 oz) 7Up (SodaStream)"], 
+      method: "Shake pink gin, lemon juice, and simple syrup with ice. Strain over fresh ice in a highball glass and top with chilled 7Up." },
+    
+    { id: 3, name: "Espresso Martini", base: "Vodka", glass: "Coupe / Martini Glass", season: "Autumn / Winter", origin: "Created by Dick Bradsell in 1983 at Soho Brasserie, London, after a famous model asked for a drink that would 'wake me up'.", 
+      ingredients: ["45 ml (1.5 oz) Scapegrace or Smirnoff No. 21 Vodka", "30 ml (1 oz) Kahlúa Coffee Liqueur", "30 ml (1 oz) Fresh Espresso", "10 ml (0.3 oz) Simple Syrup"], 
+      method: "Vigorously shake vodka, Kahlúa, espresso, and simple syrup with plenty of ice until thick foam forms. Strain into a chilled glass and garnish with 3 coffee beans." },
+    
+    { id: 4, name: "White Russian", base: "Vodka", glass: "Rocks Glass", season: "Winter", origin: "Emerged in the 1960s when cream was added to a Black Russian, later achieving cult status in 'The Big Lebowski'.", 
+      ingredients: ["50 ml (1.7 oz) Smirnoff No. 21 Vodka", "25 ml (0.8 oz) Kahlúa Coffee Liqueur", "30 ml (1 oz) Whole Milk or Cream"], 
+      method: "Fill a rocks glass with ice cubes, pour vodka and Kahlúa, top with whole milk or heavy cream, and stir lightly." },
+    
+    { id: 5, name: "Black Russian", base: "Vodka", glass: "Rocks Glass", season: "Autumn / Winter", origin: "Created in 1949 by Belgian bartender Gustave Tops at the Hotel Metropole in Brussels for the U.S. Ambassador to Luxembourg.", 
+      ingredients: ["60 ml (2 oz) Smirnoff No. 21 Vodka", "30 ml (1 oz) Kahlúa Coffee Liqueur"], 
+      method: "Stir vodka and Kahlúa with ice cubes in a rocks glass until thoroughly chilled." },
+    
+    { id: 6, name: "Vanilla Espresso Cloud", base: "Vodka", glass: "Martini / Coupe Glass", season: "Autumn / Winter", origin: "A sweet, velvety twist on the classic 1980s London recipe using smooth vanilla vodka to round out dark coffee roastiness.", 
+      ingredients: ["45 ml (1.5 oz) Absolut Vanilla Vodka", "30 ml (1 oz) Kahlúa Coffee Liqueur", "30 ml (1 oz) Fresh Espresso", "15 ml (0.5 oz) Whole Milk"], 
+      method: "Shake vanilla vodka, Kahlúa, espresso, and milk with ice until frothy. Double strain into a chilled martini glass." },
+    
+    { id: 7, name: "Tommy's Tequila Lime Margarita", base: "Tequila", glass: "Rocks Glass", season: "Summer", origin: "Created by Julio Bermejo in the early 1990s at Tommy's Mexican Restaurant in San Francisco to emphasize pure agave flavor.", 
+      ingredients: ["60 ml (2 oz) Espolòn Tequila Blanco", "30 ml (1 oz) Fresh Lime Juice", "22.5 ml (0.75 oz) Simple Syrup / Agave"], 
+      method: "Shake tequila, fresh lime juice, and simple syrup vigorously with ice. Fine strain over fresh ice into a salted rim rocks glass." },
+    
+    { id: 8, name: "Paloma Sparkler", base: "Tequila", glass: "Highball Glass", season: "Summer", origin: "A vibrant fruity variation of Mexico's most beloved highball cocktail, traditionally made with agave and citrus soda.", 
+      ingredients: ["50 ml (1.7 oz) Espolòn Tequila Blanco", "45 ml (1.5 oz) Orange Juice", "45 ml (1.5 oz) Cranberry Juice", "60 ml (2 oz) SodaStream Soda Water", "15 ml (0.5 oz) Fresh Lemon Juice"], 
+      method: "Build tequila, orange juice, cranberry juice, and lemon juice in a tall ice-filled glass. Top with sparkling soda and stir." },
+    
+    { id: 9, name: "Midori Sour", base: "Liqueur", glass: "Highball Glass", season: "Spring / Summer", origin: "Debuted in the late 1970s after Midori's world launch party at Studio 54 in NYC, becoming an iconic vibrant green staple.", 
+      ingredients: ["60 ml (2 oz) Midori Melon Liqueur", "30 ml (1 oz) Fresh Lemon Juice", "15 ml (0.5 oz) Simple Syrup", "90 ml (3 oz) 7Up (SodaStream)"], 
+      method: "Shake Midori, lemon juice, and simple syrup with ice. Strain into an ice-filled highball glass, top with 7Up, and garnish with a lemon wheel." },
+    
+    { id: 10, name: "Japanese Slipper", base: "Liqueur", glass: "Coupe Glass", season: "Summer", origin: "Created in 1984 by Jean-Paul Bourguignon at Mietta's in Melbourne, Australia using equal parts simple components.", 
+      ingredients: ["30 ml (1 oz) Midori Melon Liqueur", "30 ml (1 oz) Orange Juice", "30 ml (1 oz) Fresh Lemon Juice"], 
+      method: "Shake Midori, orange juice, and fresh lemon juice thoroughly with ice. Strain into a chilled cocktail coupe." },
 
-    // 11-20
-    { id: 11, name: "Classic Negroni", base: "Gin", alcohol: "Tanqueray London Dry Gin, Campari", mixers: "Sweet Vermouth / Red Bitters Twist", glass: "Rocks Glass", season: "All Year", origin: "Invented in Florence, Italy, in 1919 when Count Camillo Negroni asked his bartender to strengthen his Americano with gin.", method: "Stir equal parts gin, Campari, and aromatic mixers with ice. Strain over a single large ice block and orange peel." },
-    { id: 12, name: "Campari Spritz", base: "Liqueur", alcohol: "Campari", mixers: "7Up / SodaStream Water, Fresh Orange Juice", glass: "Wine Glass", season: "Summer", origin: "A Northern Italian aperitivo tradition rooted in Venetian cafe culture, created to stimulate appetite before dinner.", method: "Fill wine glass with ice, pour Campari and splash of orange juice, top with sparkling soda water, and stir." },
-    { id: 13, name: "Boulevardier Scotch", base: "Whisky", alcohol: "The Famous Grouse / Canadian Club, Campari", mixers: "Angostura Bitters", glass: "Rocks Glass", season: "Autumn / Winter", origin: "Created by Erskine Gwynne, an American writer in Paris during the 1920s who founded 'The Boulevardier' magazine.", method: "Stir whisky, Campari, and a dash of Angostura bitters with ice until chilled. Strain into glass over ice." },
-    { id: 14, name: "Piña Colada Sunrise", base: "Rum", alcohol: "Malibu Coconut Rum, Bacardi White Rum", mixers: "Pineapple Juice, Orange Juice", glass: "Hurricane / Highball Glass", season: "Summer", origin: "Puerto Rico's official national drink since 1978, created at the Caribe Hilton Hotel in San Juan in 1954.", method: "Shake Malibu, Bacardi, pineapple juice, and orange juice with ice. Strain into glass over crushed ice." },
-    { id: 15, name: "Cuba Libre", base: "Rum", alcohol: "Captain Morgan Black Spiced / Bacardi", mixers: "Coca-Cola, Fresh Lemon / Lime", glass: "Highball Glass", season: "Summer", origin: "Born in Havana around 1900 during the Spanish-American War when soldiers mixed American cola with Cuban rum.", method: "Squeeze lemon juice into highball glass filled with ice, add rum, top with Coca-Cola, and stir well." },
-    { id: 16, name: "Dark & Stormy Ginger Highball", base: "Rum", alcohol: "Captain Morgan Black Spiced Rum", mixers: "Ginger Beer (SodaStream), Fresh Lemon Juice", glass: "Highball Glass", season: "Autumn", origin: "Associated with Bermuda after WWI, where British sailors mixed local dark rum with homebrewed ginger beer.", method: "Fill glass with ice, pour ginger beer and lemon juice, then float black spiced rum on top for a layered dark cloud." },
-    { id: 17, name: "Classic Rum Mojito", base: "Rum", alcohol: "Bacardi / Savage Curl White Rum", mixers: "Fresh Lemon, 7Up / SodaStream, Sugar", glass: "Highball Glass", season: "Summer", origin: "Originating in Havana, Cuba, with roots tracing back to 16th-century medicinal sugar-cane tonics.", method: "Muddle fresh lemon slices and sugar in glass. Add white rum, fill with ice, top with soda/7Up, and churn." },
-    { id: 18, name: "Baileys Irish Coffee Cream", base: "Liqueur", alcohol: "Baileys Original Irish Cream", mixers: "Fresh Hot Coffee", glass: "Irish Coffee Mug", season: "Winter", origin: "A rich twist on Joe Sheridan's 1940s Irish Coffee created at Foynes airfield to warm transatlantic flight passengers.", method: "Pour Baileys into heatproof mug, fill with freshly brewed hot coffee, and stir gently." },
-    { id: 19, name: "Mudslide", base: "Liqueur", alcohol: "Smirnoff No. 21, Kahlúa, Baileys", mixers: "Whole Milk", glass: "Rocks Glass", season: "Winter / Summer", origin: "Invented in the 1970s at Wreck Bar on Grand Cayman Island when a guest asked for a White Russian with Baileys.", method: "Shake vodka, Kahlúa, Baileys, and milk with ice. Strain into ice-filled glass." },
-    { id: 20, name: "B-52 Layered Shot", base: "Liqueur", alcohol: "Kahlúa, Baileys, Galliano Sambuca", mixers: "None", glass: "Shot Glass", season: "Winter", origin: "Invented in the 1970s at Banff Springs Hotel in Alberta, Canada, named after the long-range strategic bomber.", method: "Gently layer over back of spoon in order: Kahlúa on bottom, Baileys in middle, Galliano Sambuca on top." },
+    { id: 11, name: "Classic Negroni", base: "Gin", glass: "Rocks Glass", season: "All Year", origin: "Invented in Florence, Italy, in 1919 when Count Camillo Negroni asked his bartender to strengthen his Americano with gin.", 
+      ingredients: ["30 ml (1 oz) Tanqueray London Dry Gin", "30 ml (1 oz) Campari", "30 ml (1 oz) Sweet Red Vermouth", "Orange peel for garnish"], 
+      method: "Stir equal parts gin, Campari, and sweet vermouth with ice in a mixing glass. Strain over a large ice block and garnish with orange peel." },
+    
+    { id: 12, name: "Campari Spritz", base: "Liqueur", glass: "Wine Glass", season: "Summer", origin: "A Northern Italian aperitivo tradition rooted in Venetian cafe culture, created to stimulate appetite before dinner.", 
+      ingredients: ["60 ml (2 oz) Campari", "30 ml (1 oz) Fresh Orange Juice", "90 ml (3 oz) 7Up or Soda Water (SodaStream)", "Orange slice"], 
+      method: "Fill a large wine glass with ice, add Campari and orange juice, top with sparkling soda or 7Up, and stir gently." },
+    
+    { id: 13, name: "Boulevardier Scotch", base: "Whisky", glass: "Rocks Glass", season: "Autumn / Winter", origin: "Created by Erskine Gwynne, an American writer in Paris during the 1920s who founded 'The Boulevardier' magazine.", 
+      ingredients: ["45 ml (1.5 oz) The Famous Grouse Scotch", "30 ml (1 oz) Campari", "30 ml (1 oz) Sweet Red Vermouth", "2 dashes Angostura Bitters"], 
+      method: "Stir Scotch, Campari, vermouth, and bitters with ice until chilled. Strain into a rocks glass over a large ice cube." },
+    
+    { id: 14, name: "Piña Colada Sunrise", base: "Rum", glass: "Hurricane Glass", season: "Summer", origin: "Puerto Rico's official national drink since 1978, created at the Caribe Hilton Hotel in San Juan in 1954.", 
+      ingredients: ["45 ml (1.5 oz) Malibu Coconut Rum", "30 ml (1 oz) Bacardi White Rum", "90 ml (3 oz) Pineapple Juice", "30 ml (1 oz) Orange Juice"], 
+      method: "Shake Malibu, Bacardi, pineapple juice, and orange juice vigorously with crushed ice. Pour unstrained into a hurricane glass." },
+    
+    { id: 15, name: "Cuba Libre", base: "Rum", glass: "Highball Glass", season: "Summer", origin: "Born in Havana around 1900 during the Spanish-American War when soldiers mixed American cola with Cuban rum.", 
+      ingredients: ["60 ml (2 oz) Captain Morgan Black Spiced Rum", "120 ml (4 oz) Coca-Cola", "15 ml (0.5 oz) Fresh Lemon/Lime Juice"], 
+      method: "Squeeze fresh lemon/lime juice into a highball glass filled with ice, add rum, top with Coca-Cola, and stir well." },
+    
+    { id: 16, name: "Dark & Stormy Ginger Highball", base: "Rum", glass: "Highball Glass", season: "Autumn", origin: "Associated with Bermuda after WWI, where British sailors mixed local dark rum with homebrewed ginger beer.", 
+      ingredients: ["60 ml (2 oz) Captain Morgan Black Spiced Rum", "120 ml (4 oz) Ginger Beer (SodaStream)", "15 ml (0.5 oz) Fresh Lemon Juice"], 
+      method: "Fill highball glass with ice, pour ginger beer and lemon juice, then gently float black spiced rum on top." },
+    
+    { id: 17, name: "Classic Rum Mojito", base: "Rum", glass: "Highball Glass", season: "Summer", origin: "Originating in Havana, Cuba, with roots tracing back to 16th-century medicinal sugar-cane tonics.", 
+      ingredients: ["60 ml (2 oz) Bacardi White Rum", "30 ml (1 oz) Fresh Lemon Juice", "20 ml (0.7 oz) Simple Syrup / Sugar", "90 ml (3 oz) 7Up or Soda Water (SodaStream)"], 
+      method: "Muddle fresh lemon slices and syrup in a tall glass. Add white rum, fill with ice, top with 7Up/soda, and churn." },
+    
+    { id: 18, name: "Baileys Irish Coffee Cream", base: "Liqueur", glass: "Irish Coffee Mug", season: "Winter", origin: "A rich twist on Joe Sheridan's 1940s Irish Coffee created at Foynes airfield to warm transatlantic flight passengers.", 
+      ingredients: ["50 ml (1.7 oz) Baileys Original Irish Cream", "120 ml (4 oz) Fresh Hot Coffee", "15 ml (0.5 oz) Whipped Cream (optional float)"], 
+      method: "Pour Baileys into a warm coffee mug, fill with freshly brewed hot coffee, stir gently, and top with whipped cream." },
+    
+    { id: 19, name: "Mudslide", base: "Liqueur", glass: "Rocks Glass", season: "Winter / Summer", origin: "Invented in the 1970s at Wreck Bar on Grand Cayman Island when a guest asked for a White Russian with Baileys.", 
+      ingredients: ["30 ml (1 oz) Smirnoff No. 21 Vodka", "30 ml (1 oz) Kahlúa Coffee Liqueur", "30 ml (1 oz) Baileys Original Irish Cream", "30 ml (1 oz) Whole Milk"], 
+      method: "Shake vodka, Kahlúa, Baileys, and milk with ice. Strain into a rocks glass filled with fresh ice." },
+    
+    { id: 20, name: "B-52 Layered Shot", base: "Liqueur", glass: "Shot Glass", season: "Winter", origin: "Invented in the 1970s at Banff Springs Hotel in Alberta, Canada, named after the long-range strategic bomber.", 
+      ingredients: ["20 ml (0.7 oz) Kahlúa Coffee Liqueur", "20 ml (0.7 oz) Baileys Original Irish Cream", "20 ml (0.7 oz) Galliano Sambuca"], 
+      method: "Carefully layer over the back of a bar spoon in order: Kahlúa on bottom, Baileys in middle, Galliano Sambuca on top." },
 
-    // 21-30
-    { id: 21, name: "Scotch Old Fashioned", base: "Whisky", alcohol: "The Famous Grouse / Glenfiddich", mixers: "Angostura Bitters, Sugar, Soda Water", glass: "Rocks Glass", season: "Autumn / Winter", origin: "The original 19th-century cocktail template conceptualized in Louisville, Kentucky: spirit, sugar, water, and bitters.", method: "Muddle sugar cube with Angostura bitters and splash of soda. Add Scotch and ice, stir until chilled." },
-    { id: 22, name: "Whisky Sour", base: "Whisky", alcohol: "Canadian Club / Famous Grouse", mixers: "Fresh Lemon Juice, Simple Syrup, Bitters", glass: "Rocks Glass", season: "Autumn", origin: "First published in Jerry Thomas's 1862 guide, originating from naval rations combining citrus to prevent scurvy.", method: "Shake whisky, lemon juice, and simple syrup with ice. Strain into glass over fresh ice with a dash of bitters." },
-    { id: 23, name: "Rob Roy", base: "Whisky", alcohol: "The Famous Grouse Scotch", mixers: "Angostura Bitters, Sweet Bitters Twist", glass: "Coupe Glass", season: "Winter", origin: "Created in 1894 at Manhattan's Waldorf Astoria to celebrate an operetta based on folk hero Rob Roy MacGregor.", method: "Stir Scotch and bitters with ice until thoroughly chilled. Strain into coupe glass." },
-    { id: 24, name: "Scotch Highball", base: "Whisky", alcohol: "Glenfiddich / Famous Grouse / Canadian Club", mixers: "SodaStream Soda Water, Fresh Lemon", glass: "Highball Glass", season: "Summer", origin: "Popularized in late 19th-century Britain and perfected into a fine art in 20th-century Japanese bars.", method: "Fill tall glass with large ice blocks, pour Scotch, top with chilled soda water, and stir once gently." },
-    { id: 25, name: "Smirnoff 100-Proof Kamikaze", base: "Vodka", alcohol: "Smirnoff No. 57 (100 Proof)", mixers: "Fresh Lemon Juice, Simple Syrup", glass: "Coupe / Shot Glass", season: "All Year", origin: "Emerged on U.S. naval bases in Japan during WWII occupation, becoming a 1970s disco classic.", method: "Shake high-proof vodka, lemon juice, and simple syrup with ice. Fine strain into chilled glass." },
-    { id: 26, name: "Golden Dream Sambuca", base: "Liqueur", alcohol: "Galliano Sambuca", mixers: "Orange Juice, Whole Milk / Cream", glass: "Coupe Glass", season: "Spring", origin: "Originated in the 1960s at Old King Cruz Bar in St. Moritz, Switzerland, becoming an IBA classic.", method: "Shake Galliano Sambuca, orange juice, and cream with ice until smooth and creamy. Double strain into glass." },
-    { id: 27, name: "Cranberry Breeze Vodka", base: "Vodka", alcohol: "Smirnoff No. 21 / Scapegrace Vodka", mixers: "Cranberry Juice, Orange Juice", glass: "Highball Glass", season: "Summer", origin: "A 1980s tropical resort classic created to highlight sweet and tart fruit juice flavor profiles.", method: "Build vodka and cranberry juice over ice in tall glass, top with orange juice float." },
-    { id: 28, name: "Appleton Estate Sea Breeze", base: "Rum", alcohol: "Appleton Estate Jamaican Rum", mixers: "Cranberry Juice, Pineapple Juice", glass: "Highball Glass", season: "Summer", origin: "Caribbean island adaptation of traditional highball coolers designed to showcase aged dark rums.", method: "Shake rum, cranberry juice, and pineapple juice with ice. Strain into highball glass packed with ice." },
-    { id: 29, name: "Malibu Bay Breeze", base: "Rum", alcohol: "Malibu Coconut Rum", mixers: "Cranberry Juice, Pineapple Juice", glass: "Highball Glass", season: "Summer", origin: "Popularized during the 1980s tropical drink craze as a beach party staple across the Americas.", method: "Fill glass with ice, add Malibu, equal parts cranberry juice and pineapple juice. Stir gently." },
-    { id: 30, name: "Red Bull Vodka Booster", base: "Vodka", alcohol: "Smirnoff No. 21 / Scapegrace Vodka", mixers: "Red Bull Energy Drink", glass: "Highball Glass", season: "All Year", origin: "Created in European nightlife clubs during the late 1990s, becoming an international high-energy classic.", method: "Pour vodka into highball glass filled with ice cubes, top with chilled Red Bull, stir lightly." },
+    { id: 21, name: "Scotch Old Fashioned", base: "Whisky", glass: "Rocks Glass", season: "Autumn / Winter", origin: "The original 19th-century cocktail template conceptualized in Louisville, Kentucky: spirit, sugar, water, and bitters.", 
+      ingredients: ["60 ml (2 oz) The Famous Grouse Scotch Whisky", "5 ml (0.2 oz) Simple Syrup or Sugar Cube", "3 dashes Angostura Aromatic Bitters", "15 ml (0.5 oz) Soda Water"], 
+      method: "Muddle sugar with Angostura bitters and soda water in a rocks glass. Add Scotch and large ice, stir until chilled." },
+    
+    { id: 22, name: "Whisky Sour", base: "Whisky", glass: "Rocks Glass", season: "Autumn", origin: "First published in Jerry Thomas's 1862 guide, originating from naval rations combining citrus to prevent scurvy.", 
+      ingredients: ["60 ml (2 oz) Canadian Club Whisky", "30 ml (1 oz) Fresh Lemon Juice", "20 ml (0.7 oz) Simple Syrup", "2 dashes Angostura Bitters"], 
+      method: "Shake whisky, lemon juice, and simple syrup vigorously with ice. Strain into a rocks glass over fresh ice and add bitters." },
+    
+    { id: 23, name: "Rob Roy", base: "Whisky", glass: "Coupe Glass", season: "Winter", origin: "Created in 1894 at Manhattan's Waldorf Astoria to celebrate an operetta based on folk hero Rob Roy MacGregor.", 
+      ingredients: ["60 ml (2 oz) The Famous Grouse Scotch Whisky", "30 ml (1 oz) Sweet Red Vermouth", "2 dashes Angostura Aromatic Bitters"], 
+      method: "Stir Scotch, sweet vermouth, and bitters with ice in a mixing glass until chilled. Strain into a chilled coupe glass." },
+    
+    { id: 24, name: "Scotch Highball", base: "Whisky", glass: "Highball Glass", season: "Summer", origin: "Popularized in late 19th-century Britain and perfected into a fine art in 20th-century Japanese bars.", 
+      ingredients: ["60 ml (2 oz) Glenfiddich Single Malt Scotch", "120 ml (4 oz) SodaStream Soda Water", "Lemon twist"], 
+      method: "Fill a tall highball glass with large ice blocks, pour Scotch, top with cold soda water, and stir once gently." },
+    
+    { id: 25, name: "Smirnoff 100-Proof Kamikaze", base: "Vodka", glass: "Coupe / Shot Glass", season: "All Year", origin: "Emerged on U.S. naval bases in Japan during WWII occupation, becoming a 1970s disco classic.", 
+      ingredients: ["50 ml (1.7 oz) Smirnoff No. 57 (100 Proof Vodka)", "25 ml (0.8 oz) Fresh Lemon Juice", "20 ml (0.7 oz) Simple Syrup"], 
+      method: "Shake high-proof vodka, lemon juice, and simple syrup with ice. Fine strain into a chilled cocktail glass." },
+    
+    { id: 26, name: "Golden Dream Sambuca", base: "Liqueur", glass: "Coupe Glass", season: "Spring", origin: "Originated in the 1960s at Old King Cruz Bar in St. Moritz, Switzerland, becoming an IBA classic.", 
+      ingredients: ["45 ml (1.5 oz) Galliano Sambuca", "30 ml (1 oz) Orange Juice", "30 ml (1 oz) Whole Milk / Cream"], 
+      method: "Shake Galliano Sambuca, orange juice, and cream with ice until smooth and creamy. Double strain into a chilled coupe." },
+    
+    { id: 27, name: "Cranberry Breeze Vodka", base: "Vodka", glass: "Highball Glass", season: "Summer", origin: "A 1980s tropical resort classic created to highlight sweet and tart fruit juice flavor profiles.", 
+      ingredients: ["50 ml (1.7 oz) Smirnoff No. 21 Vodka", "90 ml (3 oz) Cranberry Juice", "45 ml (1.5 oz) Orange Juice"], 
+      method: "Build vodka and cranberry juice over ice in a tall highball glass, top with an orange juice float." },
+    
+    { id: 28, name: "Appleton Estate Sea Breeze", base: "Rum", glass: "Highball Glass", season: "Summer", origin: "Caribbean island adaptation of traditional highball coolers designed to showcase aged dark rums.", 
+      ingredients: ["50 ml (1.7 oz) Appleton Estate Jamaican Rum", "90 ml (3 oz) Cranberry Juice", "45 ml (1.5 oz) Pineapple Juice"], 
+      method: "Shake rum, cranberry juice, and pineapple juice with ice. Strain into a highball glass packed with crushed ice." },
+    
+    { id: 29, name: "Malibu Bay Breeze", base: "Rum", glass: "Highball Glass", season: "Summer", origin: "Popularized during the 1980s tropical drink craze as a beach party staple across the Americas.", 
+      ingredients: ["60 ml (2 oz) Malibu Coconut Rum", "90 ml (3 oz) Cranberry Juice", "60 ml (2 oz) Pineapple Juice"], 
+      method: "Fill a highball glass with ice, add Malibu, cranberry juice, and pineapple juice. Stir gently to combine." },
+    
+    { id: 30, name: "Red Bull Vodka Booster", base: "Vodka", glass: "Highball Glass", season: "All Year", origin: "Created in European nightlife clubs during the late 1990s, becoming an international high-energy classic.", 
+      ingredients: ["60 ml (2 oz) Smirnoff No. 21 Vodka", "125 ml (4.2 oz) Red Bull Energy Drink", "Fresh lemon wedge"], 
+      method: "Pour vodka into a highball glass filled with ice cubes, top with chilled Red Bull, and stir lightly." },
 
-    // 31-40
-    { id: 31, name: "V Energy Rocket", base: "Vodka", alcohol: "Smirnoff No. 57 / Scapegrace Vodka", mixers: "V Energy Drink, Fresh Lemon Juice", glass: "Highball Glass", season: "All Year", origin: "A contemporary high-octane nightlife staple originating in Australia and New Zealand bar scenes.", method: "Build vodka and splash of fresh lemon in ice-filled glass, top with chilled V drink, and stir." },
-    { id: 32, name: "Pink Tequila Sunrise", base: "Tequila", alcohol: "Espolòn Tequila Blanco", mixers: "Orange Juice, Cranberry Juice", glass: "Highball Glass", season: "Summer", origin: "Modern twist on the 1970s Sausalito classic made famous by The Rolling Stones' 1972 tour.", method: "Pour tequila and orange juice over ice in highball glass. Drizzle cranberry juice down inside edge for sunset gradient." },
-    { id: 33, name: "Appleton Dark & Stormy", base: "Rum", alcohol: "Appleton Estate Jamaican Rum", mixers: "Ginger Beer (SodaStream), Lemon Juice", glass: "Highball Glass", season: "Autumn", origin: "Jamaican variation of classic nautical spiced rum highballs, highlighting rich pot-still rum notes.", method: "Fill glass with ice, pour ginger beer and squeeze lemon. Layer Appleton Estate rum carefully on top." },
-    { id: 34, name: "Midori Pineapple Punch", base: "Liqueur", alcohol: "Midori Melon Liqueur, Savage Curl Rum", mixers: "Pineapple Juice, Lemon Juice", glass: "Highball Glass", season: "Summer", origin: "Tiki-inspired cocktail popular in 1980s Hawaiian resorts combining bright melon and tropical citrus.", method: "Shake Midori, white rum, pineapple juice, and lemon juice with ice. Strain over ice and garnish." },
-    { id: 35, name: "Gordon's Pink Tonic", base: "Gin", alcohol: "Gordon's Premium Pink Gin", mixers: "7Up / Soda Water (SodaStream)", glass: "Copa Glass", season: "Summer", origin: "Modern British summer cooler designed to emphasize sweet red berry flavors with refreshing sparkle.", method: "Fill large copa glass with ice, add Gordon's Pink, top with fizzy soda/7Up, and garnish with lemon." },
-    { id: 36, name: "Vanilla Spice Cola", base: "Vodka", alcohol: "Absolut Vanilla Vodka, Captain Morgan", mixers: "Coca-Cola", glass: "Highball Glass", season: "All Year", origin: "Popular American comfort drink combining rich vanilla bean and Caribbean spiced rums with classic cola.", method: "Fill highball glass with ice, add vanilla vodka and spiced rum, top with Coca-Cola, stir gently." },
-    { id: 37, name: "Sambuca Black Russian Twist", base: "Liqueur", alcohol: "Galliano Sambuca, Kahlúa", mixers: "Coca-Cola", glass: "Highball Glass", season: "Winter", origin: "Italian-influenced coffee-anise highball created in European lounges during the late 20th century.", method: "Build Sambuca and Kahlúa in glass filled with ice, top with Coca-Cola, and stir briefly." },
-    { id: 38, name: "Glenfiddich Honeyed Soda", base: "Whisky", alcohol: "Glenfiddich Single Malt Scotch", mixers: "SodaStream Water, Simple Syrup, Lemon", glass: "Rocks Glass", season: "Autumn", origin: "Designed to highlight Speyside malt Scotch fruitiness through simple sparkling hydration.", method: "Add Glenfiddich and syrup to glass with ice block. Top with cold soda water and squeeze fresh lemon twist." },
-    { id: 39, name: "Canadian Club Citrus Sour", base: "Whisky", alcohol: "Canadian Club Whisky", mixers: "Fresh Lemon Juice, Orange Juice, Syrup", glass: "Rocks Glass", season: "Autumn", origin: "Classic North American blend sour highlighting smooth rye and corn whisky flavor profiles.", method: "Shake Canadian Club, lemon juice, orange juice, and simple syrup with ice. Strain into ice glass." },
-    { id: 40, name: "Tequila Cranberry Cooler", base: "Tequila", alcohol: "Espolòn Tequila Blanco", mixers: "Cranberry Juice, 7Up (SodaStream)", glass: "Highball Glass", season: "Summer", origin: "Modern crisp Mexican highball popular in coastal resorts as a refreshing alternative to Margaritas.", method: "Build tequila and cranberry juice over fresh ice in highball glass. Top with 7Up and lemon slice." },
+    { id: 31, name: "V Energy Rocket", base: "Vodka", glass: "Highball Glass", season: "All Year", origin: "A contemporary high-octane nightlife staple originating in Australia and New Zealand bar scenes.", 
+      ingredients: ["60 ml (2 oz) Smirnoff No. 57 Vodka", "125 ml (4.2 oz) V Energy Drink", "15 ml (0.5 oz) Fresh Lemon Juice"], 
+      method: "Build vodka and lemon juice in an ice-filled highball glass, top with chilled V energy drink, and stir." },
+    
+    { id: 32, name: "Pink Tequila Sunrise", base: "Tequila", glass: "Highball Glass", season: "Summer", origin: "Modern twist on the 1970s Sausalito classic made famous by The Rolling Stones' 1972 tour.", 
+      ingredients: ["50 ml (1.7 oz) Espolòn Tequila Blanco", "100 ml (3.4 oz) Orange Juice", "20 ml (0.7 oz) Cranberry Juice"], 
+      method: "Pour tequila and orange juice over ice in a highball glass. Drizzle cranberry juice down the inside edge for a gradient." },
+    
+    { id: 33, name: "Appleton Dark & Stormy", base: "Rum", glass: "Highball Glass", season: "Autumn", origin: "Jamaican variation of classic nautical spiced rum highballs, highlighting rich pot-still rum notes.", 
+      ingredients: ["60 ml (2 oz) Appleton Estate Jamaican Rum", "120 ml (4 oz) Ginger Beer (SodaStream)", "15 ml (0.5 oz) Fresh Lemon Juice"], 
+      method: "Fill glass with ice, pour ginger beer and squeeze lemon. Layer Appleton Estate rum carefully on top." },
+    
+    { id: 34, name: "Midori Pineapple Punch", base: "Liqueur", glass: "Highball Glass", season: "Summer", origin: "Tiki-inspired cocktail popular in 1980s Hawaiian resorts combining bright melon and tropical citrus.", 
+      ingredients: ["45 ml (1.5 oz) Midori Melon Liqueur", "30 ml (1 oz) Savage Curl White Rum", "90 ml (3 oz) Pineapple Juice", "15 ml (0.5 oz) Lemon Juice"], 
+      method: "Shake Midori, white rum, pineapple juice, and lemon juice with ice. Strain over fresh ice into a highball glass." },
+    
+    { id: 35, name: "Gordon's Pink Tonic", base: "Gin", glass: "Copa Glass", season: "Summer", origin: "Modern British summer cooler designed to emphasize sweet red berry flavors with refreshing sparkle.", 
+      ingredients: ["60 ml (2 oz) Gordon's Premium Pink Gin", "120 ml (4 oz) 7Up or Soda Water (SodaStream)", "Strawberry slices"], 
+      method: "Fill a large copa glass with ice, add Gordon's Pink Gin, top with fizzy soda or 7Up, and garnish with fresh strawberries." },
+    
+    { id: 36, name: "Vanilla Spice Cola", base: "Vodka", glass: "Highball Glass", season: "All Year", origin: "Popular American comfort drink combining rich vanilla bean and Caribbean spiced rums with classic cola.", 
+      ingredients: ["30 ml (1 oz) Absolut Vanilla Vodka", "30 ml (1 oz) Captain Morgan Spiced Rum", "120 ml (4 oz) Coca-Cola"], 
+      method: "Fill a highball glass with ice, add vanilla vodka and spiced rum, top with Coca-Cola, and stir gently." },
+    
+    { id: 37, name: "Sambuca Black Russian Twist", base: "Liqueur", glass: "Highball Glass", season: "Winter", origin: "Italian-influenced coffee-anise highball created in European lounges during the late 20th century.", 
+      ingredients: ["30 ml (1 oz) Galliano Sambuca", "30 ml (1 oz) Kahlúa Coffee Liqueur", "120 ml (4 oz) Coca-Cola"], 
+      method: "Build Sambuca and Kahlúa in a glass filled with ice, top with Coca-Cola, and stir briefly." },
+    
+    { id: 38, name: "Glenfiddich Honeyed Soda", base: "Whisky", glass: "Rocks Glass", season: "Autumn", origin: "Designed to highlight Speyside malt Scotch fruitiness through simple sparkling hydration.", 
+      ingredients: ["60 ml (2 oz) Glenfiddich Single Malt Scotch", "10 ml (0.3 oz) Simple Syrup", "90 ml (3 oz) SodaStream Soda Water", "Lemon twist"], 
+      method: "Add Glenfiddich and simple syrup to a rocks glass with a large ice block. Top with cold soda water and lemon twist." },
+    
+    { id: 39, name: "Canadian Club Citrus Sour", base: "Whisky", glass: "Rocks Glass", season: "Autumn", origin: "Classic North American blend sour highlighting smooth rye and corn whisky flavor profiles.", 
+      ingredients: ["50 ml (1.7 oz) Canadian Club Whisky", "20 ml (0.7 oz) Fresh Lemon Juice", "20 ml (0.7 oz) Orange Juice", "15 ml (0.5 oz) Simple Syrup"], 
+      method: "Shake Canadian Club, lemon juice, orange juice, and simple syrup with ice. Strain into a rocks glass over fresh ice." },
+    
+    { id: 40, name: "Tequila Cranberry Cooler", base: "Tequila", glass: "Highball Glass", season: "Summer", origin: "Modern crisp Mexican highball popular in coastal resorts as a refreshing alternative to Margaritas.", 
+      ingredients: ["50 ml (1.7 oz) Espolòn Tequila Blanco", "100 ml (3.4 oz) Cranberry Juice", "60 ml (2 oz) 7Up (SodaStream)", "Lime wedge"], 
+      method: "Build tequila and cranberry juice over fresh ice in a highball glass. Top with 7Up and garnish with lime." },
 
-    // 41-50
-    { id: 41, name: "Baileys Vanilla Iced Coffee", base: "Liqueur", alcohol: "Baileys Irish Cream, Absolut Vanilla", mixers: "Cold Brew Coffee, Milk", glass: "Highball Glass", season: "Summer / Winter", origin: "Modern dessert cocktail creation popular in summer coffee houses and brunch spots.", method: "Shake Baileys, vanilla vodka, coffee, and milk with ice. Strain into ice-filled tall glass." },
-    { id: 42, name: "Captain's Red Bull Charger", base: "Rum", alcohol: "Captain Morgan Black Spiced Rum", mixers: "Red Bull Energy Drink", glass: "Highball Glass", season: "All Year", origin: "High-energy Caribbean spiced rum mix developed in modern nightlife venues.", method: "Fill highball glass with ice, pour Captain Morgan, top with chilled Red Bull, stir gently." },
-    { id: 43, name: "Scapegrace Lemon Spritz", base: "Gin", alcohol: "Scapegrace Dry Gin", mixers: "Fresh Lemon Juice, 7Up / SodaStream", glass: "Highball Glass", season: "Spring", origin: "New Zealand artisanal gin serve highlighting crisp botanical structure with citrus fizz.", method: "Build Scapegrace gin and lemon juice over ice. Top with sparkling 7Up or soda, stir." },
-    { id: 44, name: "Appleton Jamaican Ginger", base: "Rum", alcohol: "Appleton Estate Jamaican Rum", mixers: "Ginger Beer (SodaStream), Lemon Juice", glass: "Highball Glass", season: "Autumn", origin: "Traditional Kingston highball celebrating Jamaica's historic rum distillation and ginger crops.", method: "Build Appleton Estate and lemon juice in tall glass with ice. Top with ginger beer and stir." },
-    { id: 45, name: "Midori Cranberry Fizz", base: "Liqueur", alcohol: "Midori Melon Liqueur", mixers: "Cranberry Juice, 7Up (SodaStream)", glass: "Highball Glass", season: "Summer", origin: "Vibrant multi-colored party drink from 1990s lounge bars featuring sweet melon and tart berry.", method: "Pour Midori into ice-filled glass, add cranberry juice, top with 7Up, stir lightly." },
-    { id: 46, name: "Absolut Vanilla Cranberry Spritz", base: "Vodka", alcohol: "Absolut Vanilla Vodka", mixers: "Cranberry Juice, Soda Water", glass: "Highball Glass", season: "Autumn", origin: "Smooth festive cocktail reminiscent of holiday fruit tarts and vanilla desserts.", method: "Build vanilla vodka and cranberry juice in ice glass. Top with sparkling soda water and lemon." },
-    { id: 47, name: "Smirnoff 100 V-Bomb", base: "Vodka", alcohol: "Smirnoff No. 57 (100 Proof)", mixers: "V Energy Drink, Cranberry Juice", glass: "Highball Glass", season: "All Year", origin: "High-proof energy party cocktail designed for maximum flavor and energy boost.", method: "Pour high-proof Smirnoff 57 and cranberry in ice-filled glass. Top with V energy drink." },
-    { id: 48, name: "Tanqueray Citrus Cooler", base: "Gin", alcohol: "Tanqueray London Dry Gin", mixers: "Orange Juice, Lemon Juice, 7Up", glass: "Highball Glass", season: "Summer", origin: "Classic London dry gin garden punch highlighting crisp juniper and citrus juices.", method: "Shake Tanqueray with orange and lemon juice. Strain over ice and top with 7Up." },
-    { id: 49, name: "Famous Grouse Ginger Sour", base: "Whisky", alcohol: "The Famous Grouse Scotch", mixers: "Ginger Beer (SodaStream), Lemon Juice", glass: "Rocks Glass", season: "Autumn", origin: "Traditional Scottish pub mix marrying blended Scotch whisky with spicy ginger beer.", method: "Shake Scotch and lemon juice with ice. Strain into rocks glass with ice and top with ginger beer." },
-    { id: 50, name: "Malibu Pineapple Express", base: "Rum", alcohol: "Malibu Coconut Rum, Savage Curl Rum", mixers: "Pineapple Juice, V Energy Drink", glass: "Highball Glass", season: "Summer", origin: "Contemporary tropical festival highball combining coconut spirit and energy mixer.", method: "Build Malibu, white rum, and pineapple juice in tall ice glass. Top with chilled V drink." },
+    { id: 41, name: "Baileys Vanilla Iced Coffee", base: "Liqueur", glass: "Highball Glass", season: "Summer / Winter", origin: "Modern dessert cocktail creation popular in summer coffee houses and brunch spots.", 
+      ingredients: ["45 ml (1.5 oz) Baileys Original Irish Cream", "30 ml (1 oz) Absolut Vanilla Vodka", "90 ml (3 oz) Cold Brew Coffee", "30 ml (1 oz) Milk"], 
+      method: "Shake Baileys, vanilla vodka, coffee, and milk with ice. Strain into an ice-filled tall glass." },
+    
+    { id: 42, name: "Captain's Red Bull Charger", base: "Rum", glass: "Highball Glass", season: "All Year", origin: "High-energy Caribbean spiced rum mix developed in modern nightlife venues.", 
+      ingredients: ["60 ml (2 oz) Captain Morgan Black Spiced Rum", "125 ml (4.2 oz) Red Bull Energy Drink"], 
+      method: "Fill a highball glass with ice cubes, pour Captain Morgan, top with chilled Red Bull, and stir gently." },
+    
+    { id: 43, name: "Scapegrace Lemon Spritz", base: "Gin", glass: "Highball Glass", season: "Spring", origin: "New Zealand artisanal gin serve highlighting crisp botanical structure with citrus fizz.", 
+      ingredients: ["60 ml (2 oz) Scapegrace Dry Gin", "20 ml (0.7 oz) Fresh Lemon Juice", "120 ml (4 oz) 7Up or Soda (SodaStream)"], 
+      method: "Build Scapegrace gin and lemon juice over ice in a highball glass. Top with sparkling 7Up or soda, and stir." },
+    
+    { id: 44, name: "Appleton Jamaican Ginger", base: "Rum", glass: "Highball Glass", season: "Autumn", origin: "Traditional Kingston highball celebrating Jamaica's historic rum distillation and ginger crops.", 
+      ingredients: ["60 ml (2 oz) Appleton Estate Jamaican Rum", "15 ml (0.5 oz) Fresh Lemon Juice", "120 ml (4 oz) Ginger Beer (SodaStream)"], 
+      method: "Build Appleton Estate and lemon juice in a tall glass with ice. Top with ginger beer and stir." },
+    
+    { id: 45, name: "Midori Cranberry Fizz", base: "Liqueur", glass: "Highball Glass", season: "Summer", origin: "Vibrant multi-colored party drink from 1990s lounge bars featuring sweet melon and tart berry.", 
+      ingredients: ["50 ml (1.7 oz) Midori Melon Liqueur", "60 ml (2 oz) Cranberry Juice", "90 ml (3 oz) 7Up (SodaStream)"], 
+      method: "Pour Midori into an ice-filled highball glass, add cranberry juice, top with 7Up, and stir lightly." },
+    
+    { id: 46, name: "Absolut Vanilla Cranberry Spritz", base: "Vodka", glass: "Highball Glass", season: "Autumn", origin: "Smooth festive cocktail reminiscent of holiday fruit tarts and vanilla desserts.", 
+      ingredients: ["50 ml (1.7 oz) Absolut Vanilla Vodka", "90 ml (3 oz) Cranberry Juice", "60 ml (2 oz) SodaStream Soda Water"], 
+      method: "Build vanilla vodka and cranberry juice in a glass with ice. Top with sparkling soda water and a lemon wheel." },
+    
+    { id: 47, name: "Smirnoff 100 V-Bomb", base: "Vodka", glass: "Highball Glass", season: "All Year", origin: "High-proof energy party cocktail designed for maximum flavor and energy boost.", 
+      ingredients: ["45 ml (1.5 oz) Smirnoff No. 57 (100 Proof)", "60 ml (2 oz) Cranberry Juice", "100 ml (3.4 oz) V Energy Drink"], 
+      method: "Pour high-proof Smirnoff 57 and cranberry juice into an ice-filled glass. Top with V energy drink." },
+    
+    { id: 48, name: "Tanqueray Citrus Cooler", base: "Gin", glass: "Highball Glass", season: "Summer", origin: "Classic London dry gin garden punch highlighting crisp juniper and citrus juices.", 
+      ingredients: ["50 ml (1.7 oz) Tanqueray London Dry Gin", "30 ml (1 oz) Orange Juice", "15 ml (0.5 oz) Fresh Lemon Juice", "90 ml (3 oz) 7Up"], 
+      method: "Shake Tanqueray with orange and lemon juice. Strain over ice into a highball glass and top with 7Up." },
+    
+    { id: 49, name: "Famous Grouse Ginger Sour", base: "Whisky", glass: "Rocks Glass", season: "Autumn", origin: "Traditional Scottish pub mix marrying blended Scotch whisky with spicy ginger beer.", 
+      ingredients: ["50 ml (1.7 oz) The Famous Grouse Scotch", "20 ml (0.7 oz) Fresh Lemon Juice", "90 ml (3 oz) Ginger Beer (SodaStream)"], 
+      method: "Shake Scotch and lemon juice with ice. Strain into a rocks glass with ice and top with ginger beer." },
+    
+    { id: 50, name: "Malibu Pineapple Express", base: "Rum", glass: "Highball Glass", season: "Summer", origin: "Contemporary tropical festival highball combining coconut spirit and energy mixer.", 
+      ingredients: ["30 ml (1 oz) Malibu Coconut Rum", "30 ml (1 oz) Savage Curl White Rum", "60 ml (2 oz) Pineapple Juice", "90 ml (3 oz) V Energy Drink"], 
+      method: "Build Malibu, white rum, and pineapple juice in a tall ice glass. Top with chilled V energy drink." },
 
-    // 51-60
-    { id: 51, name: "Campari Orange (Garibaldi)", base: "Liqueur", alcohol: "Campari", mixers: "Fresh Orange Juice", glass: "Highball Glass", season: "Summer", origin: "Named after Italian unifying general Giuseppe Garibaldi, symbolizing the joining of North (Campari) and South (Oranges).", method: "Whip orange juice until frothy. Pour Campari over ice, top with frothy orange juice, and stir." },
-    { id: 52, name: "Galliano Sambuca Lemon Soda", base: "Liqueur", alcohol: "Galliano Sambuca", mixers: "Fresh Lemon Juice, Soda Water", glass: "Highball Glass", season: "Summer", origin: "Italian digestive highball designed to lighten rich anise liqueur for hot summer afternoons.", method: "Shake Sambuca and lemon juice with ice. Strain over ice into highball glass, top with soda." },
-    { id: 53, name: "Bacardi Pineapple Mojito", base: "Rum", alcohol: "Bacardi White Rum", mixers: "Pineapple Juice, Lemon, 7Up", glass: "Highball Glass", season: "Summer", origin: "Tropical beach resort variation of Cuba's famous white rum highball.", method: "Muddle lemon slices in glass. Add rum, pineapple juice, ice, top with 7Up, stir well." },
-    { id: 54, name: "Smirnoff 21 Red Bull Twist", base: "Vodka", alcohol: "Smirnoff No. 21 Vodka", mixers: "Red Bull, Fresh Lemon Juice", glass: "Highball Glass", season: "All Year", origin: "The definitive nightlife energy drink combination served across global clubs since the 1990s.", method: "Build vodka and fresh lemon juice over ice in highball glass. Top with Red Bull." },
-    { id: 55, name: "Canadian Club Ginger Highball", base: "Whisky", alcohol: "Canadian Club Whisky", mixers: "Ginger Beer (SodaStream), Lemon", glass: "Highball Glass", season: "Autumn", origin: "Classic North American tavern highball marrying smooth blended Canadian whisky with ginger spice.", method: "Build Canadian Club in ice-filled glass. Squeeze lemon wedge, top with ginger beer, stir." },
-    { id: 56, name: "Gordon's Pink Lemonade", base: "Gin", alcohol: "Gordon's Premium Pink Gin", mixers: "Fresh Lemon Juice, Simple Syrup, Soda", glass: "Highball Glass", season: "Summer", origin: "Modern British picnic favourite combining berry gin with homemade sparkling lemonade.", method: "Build pink gin, lemon juice, and syrup over ice. Top with sparkling soda water." },
-    { id: 57, name: "Appleton Cola Cooler", base: "Rum", alcohol: "Appleton Estate Jamaican Rum", mixers: "Coca-Cola, Fresh Lemon", glass: "Highball Glass", season: "Summer", origin: "Traditional Jamaican rum & cola standard highlighting rich copper pot-still spirits.", method: "Squeeze lemon into highball glass filled with ice. Add Appleton rum, top with Coca-Cola." },
-    { id: 58, name: "Absolut Vanilla White Russian", base: "Vodka", alcohol: "Absolut Vanilla Vodka, Kahlúa", mixers: "Whole Milk", glass: "Rocks Glass", season: "Winter", origin: "Indulgent dessert variation of the classic 1960s cocktail adding aromatic vanilla notes.", method: "Build vanilla vodka and Kahlúa over ice in rocks glass. Top with whole milk and stir." },
-    { id: 59, name: "Glenfiddich Rob Roy Bitters", base: "Whisky", alcohol: "Glenfiddich Single Malt Scotch", mixers: "Angostura Bitters, Simple Syrup", glass: "Coupe Glass", season: "Winter", origin: "Refined single malt interpretation of the classic Manhattan family cocktail.", method: "Stir Glenfiddich, bitters, and simple syrup with ice until chilled. Strain into coupe." },
-    { id: 60, name: "Midori Sunrise", base: "Liqueur", alcohol: "Midori Melon Liqueur", mixers: "Orange Juice, Cranberry Juice", glass: "Highball Glass", season: "Summer", origin: "Eye-catching 1980s layered cocktail featuring bright green, orange, and red hues.", method: "Fill glass with ice, pour Midori and orange juice. Slowly pour cranberry juice over back of spoon." },
+    { id: 51, name: "Campari Orange (Garibaldi)", base: "Liqueur", glass: "Highball Glass", season: "Summer", origin: "Named after Italian unifying general Giuseppe Garibaldi, symbolizing the joining of North (Campari) and South (Oranges).", 
+      ingredients: ["50 ml (1.7 oz) Campari", "120 ml (4 oz) Fresh Orange Juice"], 
+      method: "Whip orange juice in a shaker until frothy. Pour Campari over ice in a highball glass, top with frothy orange juice, and stir." },
+    
+    { id: 52, name: "Galliano Sambuca Lemon Soda", base: "Liqueur", glass: "Highball Glass", season: "Summer", origin: "Italian digestive highball designed to lighten rich anise liqueur for hot summer afternoons.", 
+      ingredients: ["50 ml (1.7 oz) Galliano Sambuca", "25 ml (0.8 oz) Fresh Lemon Juice", "100 ml (3.4 oz) SodaStream Soda Water"], 
+      method: "Shake Sambuca and lemon juice with ice. Strain over ice into a highball glass, top with soda water." },
+    
+    { id: 53, name: "Bacardi Pineapple Mojito", base: "Rum", glass: "Highball Glass", season: "Summer", origin: "Tropical beach resort variation of Cuba's famous white rum highball.", 
+      ingredients: ["60 ml (2 oz) Bacardi White Rum", "45 ml (1.5 oz) Pineapple Juice", "20 ml (0.7 oz) Fresh Lemon Juice", "15 ml (0.5 oz) Sugar", "60 ml (2 oz) 7Up"], 
+      method: "Muddle lemon slices and sugar in a tall glass. Add rum, pineapple juice, and ice, top with 7Up, and stir well." },
+    
+    { id: 54, name: "Smirnoff 21 Red Bull Twist", base: "Vodka", glass: "Highball Glass", season: "All Year", origin: "The definitive nightlife energy drink combination served across global clubs since the 1990s.", 
+      ingredients: ["60 ml (2 oz) Smirnoff No. 21 Vodka", "15 ml (0.5 oz) Fresh Lemon Juice", "125 ml (4.2 oz) Red Bull Energy Drink"], 
+      method: "Build vodka and fresh lemon juice over ice in a highball glass. Top with chilled Red Bull." },
+    
+    { id: 55, name: "Canadian Club Ginger Highball", base: "Whisky", glass: "Highball Glass", season: "Autumn", origin: "Classic North American tavern highball marrying smooth blended Canadian whisky with ginger spice.", 
+      ingredients: ["60 ml (2 oz) Canadian Club Whisky", "120 ml (4 oz) Ginger Beer (SodaStream)", "Lemon wedge"], 
+      method: "Build Canadian Club in an ice-filled highball glass. Squeeze lemon wedge, top with ginger beer, and stir." },
+    
+    { id: 56, name: "Gordon's Pink Lemonade", base: "Gin", glass: "Highball Glass", season: "Summer", origin: "Modern British picnic favourite combining berry gin with homemade sparkling lemonade.", 
+      ingredients: ["60 ml (2 oz) Gordon's Premium Pink Gin", "30 ml (1 oz) Fresh Lemon Juice", "15 ml (0.5 oz) Simple Syrup", "90 ml (3 oz) SodaStream Soda Water"], 
+      method: "Build pink gin, lemon juice, and syrup over ice in a highball glass. Top with sparkling soda water." },
+    
+    { id: 57, name: "Appleton Cola Cooler", base: "Rum", glass: "Highball Glass", season: "Summer", origin: "Traditional Jamaican rum & cola standard highlighting rich copper pot-still spirits.", 
+      ingredients: ["60 ml (2 oz) Appleton Estate Jamaican Rum", "120 ml (4 oz) Coca-Cola", "Fresh lemon wedge"], 
+      method: "Squeeze lemon into a highball glass filled with ice. Add Appleton rum, top with Coca-Cola, and stir." },
+    
+    { id: 58, name: "Absolut Vanilla White Russian", base: "Vodka", glass: "Rocks Glass", season: "Winter", origin: "Indulgent dessert variation of the classic 1960s cocktail adding aromatic vanilla notes.", 
+      ingredients: ["50 ml (1.7 oz) Absolut Vanilla Vodka", "25 ml (0.8 oz) Kahlúa Coffee Liqueur", "30 ml (1 oz) Whole Milk"], 
+      method: "Build vanilla vodka and Kahlúa over ice in a rocks glass. Top with whole milk and stir gently." },
+    
+    { id: 59, name: "Glenfiddich Rob Roy Bitters", base: "Whisky", glass: "Coupe Glass", season: "Winter", origin: "Refined single malt interpretation of the classic Manhattan family cocktail.", 
+      ingredients: ["60 ml (2 oz) Glenfiddich Single Malt Scotch", "30 ml (1 oz) Sweet Red Vermouth", "2 dashes Angostura Aromatic Bitters"], 
+      method: "Stir Glenfiddich, sweet vermouth, and bitters with ice until thoroughly chilled. Strain into a coupe glass." },
+    
+    { id: 60, name: "Midori Sunrise", base: "Liqueur", glass: "Highball Glass", season: "Summer", origin: "Eye-catching 1980s layered cocktail featuring bright green, orange, and red hues.", 
+      ingredients: ["45 ml (1.5 oz) Midori Melon Liqueur", "90 ml (3 oz) Orange Juice", "15 ml (0.5 oz) Cranberry Juice"], 
+      method: "Fill highball glass with ice, pour Midori and orange juice. Slowly pour cranberry juice over back of spoon to layer." },
 
-    // 61-70
-    { id: 61, name: "Scapegrace Gin Citrus Fizz", base: "Gin", alcohol: "Scapegrace Dry Gin", mixers: "Orange Juice, Lemon Juice, 7Up", glass: "Highball Glass", season: "Spring", origin: "New Zealand craft gin cocktail celebrating small-batch botanicals and fresh citrus juice.", method: "Shake Scapegrace gin, orange juice, and lemon juice with ice. Strain into ice glass, top with 7Up." },
-    { id: 62, name: "Captain Morgan Black & Ginger", base: "Rum", alcohol: "Captain Morgan Black Spiced Rum", mixers: "Ginger Beer (SodaStream)", glass: "Highball Glass", season: "Autumn", origin: "Robust spiced rum highball popular in British and Caribbean naval tradition.", method: "Fill glass with ice, add Captain Morgan Black Spiced rum, top with ginger beer, stir." },
-    { id: 63, name: "Smirnoff 57 Citrus Bomb", base: "Vodka", alcohol: "Smirnoff No. 57 (100 Proof)", mixers: "Fresh Lemon Juice, Orange Juice, Syrup", glass: "Rocks Glass", season: "All Year", origin: "High-proof citrus sour designed to balance potent 100-proof spirit strength with intense fruit juice.", method: "Shake Smirnoff 57, fresh lemon juice, orange juice, and syrup with ice. Fine strain over fresh ice." },
-    { id: 64, name: "Kahlúa Iced Cream Latte", base: "Liqueur", alcohol: "Kahlúa Coffee Liqueur", mixers: "Fresh Coffee, Whole Milk", glass: "Highball Glass", season: "Summer", origin: "Popular Mexican coffee liqueur cooler created for warm afternoon coffee breaks.", method: "Fill tall glass with ice, add Kahlúa, cold coffee, and top with whole milk. Stir gently." },
-    { id: 65, name: "Espolòn Tequila Sunrise", base: "Tequila", alcohol: "Espolòn Tequila Blanco", mixers: "Orange Juice, Cranberry Juice", glass: "Highball Glass", season: "Summer", origin: "Iconic California-Mexican resort drink made world-famous during the 1970s rock era.", method: "Pour tequila and orange juice over ice in highball glass. Sink cranberry juice to bottom." },
-    { id: 66, name: "Tanqueray Cranberry Highball", base: "Gin", alcohol: "Tanqueray London Dry Gin", mixers: "Cranberry Juice, Soda Water, Lemon", glass: "Highball Glass", season: "Autumn", origin: "Crisp botanical highball balancing dry London gin with tart cranberry juice.", method: "Build Tanqueray gin and cranberry juice over ice in tall glass. Top with soda and lemon squeeze." },
-    { id: 67, name: "Baileys Mudslide Float", base: "Liqueur", alcohol: "Baileys Irish Cream, Smirnoff No. 21", mixers: "Whole Milk, Coca-Cola", glass: "Highball Glass", season: "Summer", origin: "Fun 1980s soda fountain adaptation combining Irish cream liqueur and cola fizz.", method: "Build Baileys, vodka, and milk in glass with ice. Top gently with Coca-Cola float." },
-    { id: 68, name: "Savage Curl Tropical Punch", base: "Rum", alcohol: "Savage Curl White Rum, Malibu", mixers: "Pineapple Juice, Cranberry Juice", glass: "Highball Glass", season: "Summer", origin: "Classic Caribbean beach party punch combining light white rum and coconut.", method: "Shake Savage Curl white rum, Malibu, pineapple juice, and cranberry juice with ice. Strain into tall glass." },
-    { id: 69, name: "Famous Grouse Cranberry Sour", base: "Whisky", alcohol: "The Famous Grouse Scotch", mixers: "Cranberry Juice, Lemon Juice, Syrup", glass: "Rocks Glass", season: "Autumn", origin: "Modern tart whisky sour adaptation highlighting Scotch malt notes and cranberry fruit.", method: "Shake Scotch whisky, cranberry juice, lemon juice, and syrup with ice. Strain over ice." },
-    { id: 70, name: "Galliano Sambuca Espresso Float", base: "Liqueur", alcohol: "Galliano Sambuca, Kahlúa", mixers: "Fresh Coffee, Cream", glass: "Coupe Glass", season: "Winter", origin: "Italian post-dinner digestivo combining traditional anise liqueur and rich black espresso.", method: "Shake Sambuca, Kahlúa, and cold espresso with ice. Strain into coupe, top with cream float." },
+    { id: 61, name: "Scapegrace Gin Citrus Fizz", base: "Gin", glass: "Highball Glass", season: "Spring", origin: "New Zealand craft gin cocktail celebrating small-batch botanicals and fresh citrus juice.", 
+      ingredients: ["50 ml (1.7 oz) Scapegrace Dry Gin", "30 ml (1 oz) Orange Juice", "15 ml (0.5 oz) Fresh Lemon Juice", "90 ml (3 oz) 7Up"], 
+      method: "Shake Scapegrace gin, orange juice, and lemon juice with ice. Strain into an ice glass and top with 7Up." },
+    
+    { id: 62, name: "Captain Morgan Black & Ginger", base: "Rum", glass: "Highball Glass", season: "Autumn", origin: "Robust spiced rum highball popular in British and Caribbean naval tradition.", 
+      ingredients: ["60 ml (2 oz) Captain Morgan Black Spiced Rum", "130 ml (4.4 oz) Ginger Beer (SodaStream)"], 
+      method: "Fill highball glass with ice, add Captain Morgan Black Spiced rum, top with ginger beer, and stir." },
+    
+    { id: 63, name: "Smirnoff 57 Citrus Bomb", base: "Vodka", glass: "Rocks Glass", season: "All Year", origin: "High-proof citrus sour designed to balance potent 100-proof spirit strength with intense fruit juice.", 
+      ingredients: ["50 ml (1.7 oz) Smirnoff No. 57 (100 Proof)", "25 ml (0.8 oz) Fresh Lemon Juice", "25 ml (0.8 oz) Orange Juice", "15 ml (0.5 oz) Simple Syrup"], 
+      method: "Shake Smirnoff 57, lemon juice, orange juice, and simple syrup with ice. Fine strain over fresh ice in a rocks glass." },
+    
+    { id: 64, name: "Kahlúa Iced Cream Latte", base: "Liqueur", glass: "Highball Glass", season: "Summer", origin: "Popular Mexican coffee liqueur cooler created for warm afternoon coffee breaks.", 
+      ingredients: ["50 ml (1.7 oz) Kahlúa Coffee Liqueur", "60 ml (2 oz) Cold Brew Coffee", "60 ml (2 oz) Whole Milk"], 
+      method: "Fill a tall glass with ice, add Kahlúa, cold coffee, and top with whole milk. Stir gently." },
+    
+    { id: 65, name: "Espolòn Tequila Sunrise", base: "Tequila", glass: "Highball Glass", season: "Summer", origin: "Iconic California-Mexican resort drink made world-famous during the 1970s rock era.", 
+      ingredients: ["50 ml (1.7 oz) Espolòn Tequila Blanco", "100 ml (3.4 oz) Orange Juice", "15 ml (0.5 oz) Cranberry Juice"], 
+      method: "Pour tequila and orange juice over ice in a highball glass. Sink cranberry juice to the bottom." },
+    
+    { id: 66, name: "Tanqueray Cranberry Highball", base: "Gin", glass: "Highball Glass", season: "Autumn", origin: "Crisp botanical highball balancing dry London gin with tart cranberry juice.", 
+      ingredients: ["50 ml (1.7 oz) Tanqueray London Dry Gin", "90 ml (3 oz) Cranberry Juice", "45 ml (1.5 oz) SodaStream Soda Water", "Lemon wedge"], 
+      method: "Build Tanqueray gin and cranberry juice over ice in a tall glass. Top with soda and squeeze lemon." },
+    
+    { id: 67, name: "Baileys Mudslide Float", base: "Liqueur", glass: "Highball Glass", season: "Summer", origin: "Fun 1980s soda fountain adaptation combining Irish cream liqueur and cola fizz.", 
+      ingredients: ["45 ml (1.5 oz) Baileys Original Irish Cream", "30 ml (1 oz) Smirnoff No. 21 Vodka", "45 ml (1.5 oz) Whole Milk", "60 ml (2 oz) Coca-Cola"], 
+      method: "Build Baileys, vodka, and milk in a glass with ice. Top gently with a Coca-Cola float." },
+    
+    { id: 68, name: "Savage Curl Tropical Punch", base: "Rum", glass: "Highball Glass", season: "Summer", origin: "Classic Caribbean beach party punch combining light white rum and coconut.", 
+      ingredients: ["30 ml (1 oz) Savage Curl White Rum", "30 ml (1 oz) Malibu Coconut Rum", "60 ml (2 oz) Pineapple Juice", "60 ml (2 oz) Cranberry Juice"], 
+      method: "Shake white rum, Malibu, pineapple juice, and cranberry juice with ice. Strain into a tall glass." },
+    
+    { id: 69, name: "Famous Grouse Cranberry Sour", base: "Whisky", glass: "Rocks Glass", season: "Autumn", origin: "Modern tart whisky sour adaptation highlighting Scotch malt notes and cranberry fruit.", 
+      ingredients: ["50 ml (1.7 oz) The Famous Grouse Scotch", "45 ml (1.5 oz) Cranberry Juice", "20 ml (0.7 oz) Fresh Lemon Juice", "15 ml (0.5 oz) Simple Syrup"], 
+      method: "Shake Scotch whisky, cranberry juice, lemon juice, and syrup with ice. Strain over fresh ice into a rocks glass." },
+    
+    { id: 70, name: "Galliano Sambuca Espresso Float", base: "Liqueur", glass: "Coupe Glass", season: "Winter", origin: "Italian post-dinner digestivo combining traditional anise liqueur and rich black espresso.", 
+      ingredients: ["30 ml (1 oz) Galliano Sambuca", "30 ml (1 oz) Kahlúa Coffee Liqueur", "30 ml (1 oz) Cold Espresso", "20 ml (0.7 oz) Cream float"], 
+      method: "Shake Sambuca, Kahlúa, and cold espresso with ice. Strain into a coupe glass, and float cream on top." },
 
-    // 71-80
-    { id: 71, name: "Gordon's Pink V-Energy", base: "Gin", alcohol: "Gordon's Premium Pink Gin", mixers: "V Energy Drink, Fresh Lemon Juice", glass: "Highball Glass", season: "Summer", origin: "Modern high-energy festival cocktail combining berry gin and herbal energy drink.", method: "Fill tall glass with ice, add Gordon's Pink Gin, squeeze lemon, top with V energy drink." },
-    { id: 72, name: "Absolut Vanilla Pineapple Express", base: "Vodka", alcohol: "Absolut Vanilla Vodka", mixers: "Pineapple Juice, 7Up (SodaStream)", glass: "Highball Glass", season: "Summer", origin: "Sweet tropical dessert cocktail reminiscent of pineapple upside-down cake.", method: "Shake vanilla vodka and pineapple juice with ice. Strain into ice glass, top with 7Up." },
-    { id: 73, name: "Scapegrace Gin & Juice", base: "Gin", alcohol: "Scapegrace Dry Gin", mixers: "Orange Juice, Cranberry Juice", glass: "Highball Glass", season: "Summer", origin: "Popularized in 1990s hip-hop culture, adapted here with premium New Zealand dry gin.", method: "Build Scapegrace gin, orange juice, and cranberry juice in ice-filled glass. Stir well." },
-    { id: 74, name: "Captain Morgan Cranberry Cooler", base: "Rum", alcohol: "Captain Morgan Black Spiced Rum", mixers: "Cranberry Juice, 7Up", glass: "Highball Glass", season: "Autumn", origin: "Crisp dark rum highball created to balance heavy spice notes with bright berry acid.", method: "Build spiced rum and cranberry juice over ice in highball glass. Top with 7Up." },
-    { id: 75, name: "Smirnoff 21 Ginger Lemonade", base: "Vodka", alcohol: "Smirnoff No. 21 Vodka", mixers: "Ginger Beer (SodaStream), Fresh Lemon", glass: "Highball Glass", season: "Summer", origin: "Refreshing American summer highball combining smooth vodka with zesty ginger lemon.", method: "Build vodka and fresh lemon juice over ice. Top with ginger beer soda and stir." },
-    { id: 76, name: "Appleton Estate Punch", base: "Rum", alcohol: "Appleton Estate Jamaican Rum", mixers: "Orange Juice, Pineapple Juice, Lemon", glass: "Highball Glass", season: "Summer", origin: "Classic 19th-century West Indies rum punch following the traditional planation rule.", method: "Shake Appleton rum, orange juice, pineapple juice, and lemon juice with ice. Strain over ice." },
-    { id: 77, name: "Canadian Club Red Bull", base: "Whisky", alcohol: "Canadian Club Whisky", mixers: "Red Bull Energy Drink", glass: "Highball Glass", season: "All Year", origin: "Contemporary high-energy whisky serve popular in North American nightlife.", method: "Fill highball glass with ice, add Canadian Club whisky, top with chilled Red Bull." },
-    { id: 78, name: "Glenfiddich Highball Twist", base: "Whisky", alcohol: "Glenfiddich Single Malt Scotch", mixers: "7Up (SodaStream), Fresh Lemon", glass: "Highball Glass", season: "Spring", origin: "Light single malt highball designed to highlight Speyside floral notes.", method: "Build Glenfiddich in tall glass with large ice blocks. Top with 7Up and garnish with lemon." },
-    { id: 79, name: "Espolòn Tequila Ginger Mule", base: "Tequila", alcohol: "Espolòn Tequila Blanco", mixers: "Ginger Beer (SodaStream), Lemon Juice", glass: "Rocks Glass", season: "Summer", origin: "Mexican agave variation of the classic 1940s Moscow Mule highball.", method: "Shake tequila and lemon juice with ice. Strain over fresh ice, top with ginger beer." },
-    { id: 80, name: "Midori Red Bull Electric Cooler", base: "Liqueur", alcohol: "Midori Melon Liqueur, Scapegrace Vodka", mixers: "Red Bull Energy Drink", glass: "Highball Glass", season: "Summer", origin: "Vibrant high-energy nightclub creation popular in international party capitals.", method: "Build Midori and vodka in ice-filled glass. Top with Red Bull and stir lightly." },
+    { id: 71, name: "Gordon's Pink V-Energy", base: "Gin", glass: "Highball Glass", season: "Summer", origin: "Modern high-energy festival cocktail combining berry gin and herbal energy drink.", 
+      ingredients: ["60 ml (2 oz) Gordon's Premium Pink Gin", "15 ml (0.5 oz) Fresh Lemon Juice", "125 ml (4.2 oz) V Energy Drink"], 
+      method: "Fill a tall glass with ice, add Gordon's Pink Gin, squeeze lemon juice, and top with V energy drink." },
+    
+    { id: 72, name: "Absolut Vanilla Pineapple Express", base: "Vodka", glass: "Highball Glass", season: "Summer", origin: "Sweet tropical dessert cocktail reminiscent of pineapple upside-down cake.", 
+      ingredients: ["50 ml (1.7 oz) Absolut Vanilla Vodka", "90 ml (3 oz) Pineapple Juice", "60 ml (2 oz) 7Up (SodaStream)"], 
+      method: "Shake vanilla vodka and pineapple juice with ice. Strain into an ice glass and top with 7Up." },
+    
+    { id: 73, name: "Scapegrace Gin & Juice", base: "Gin", glass: "Highball Glass", season: "Summer", origin: "Popularized in 1990s hip-hop culture, adapted here with premium New Zealand dry gin.", 
+      ingredients: ["50 ml (1.7 oz) Scapegrace Dry Gin", "60 ml (2 oz) Orange Juice", "60 ml (2 oz) Cranberry Juice"], 
+      method: "Build Scapegrace gin, orange juice, and cranberry juice in an ice-filled highball glass. Stir well." },
+    
+    { id: 74, name: "Captain Morgan Cranberry Cooler", base: "Rum", glass: "Highball Glass", season: "Autumn", origin: "Crisp dark rum highball created to balance heavy spice notes with bright berry acid.", 
+      ingredients: ["50 ml (1.7 oz) Captain Morgan Black Spiced Rum", "90 ml (3 oz) Cranberry Juice", "60 ml (2 oz) 7Up"], 
+      method: "Build spiced rum and cranberry juice over ice in a highball glass. Top with 7Up and stir." },
+    
+    { id: 75, name: "Smirnoff 21 Ginger Lemonade", base: "Vodka", glass: "Highball Glass", season: "Summer", origin: "Refreshing American summer highball combining smooth vodka with zesty ginger lemon.", 
+      ingredients: ["50 ml (1.7 oz) Smirnoff No. 21 Vodka", "20 ml (0.7 oz) Fresh Lemon Juice", "120 ml (4 oz) Ginger Beer (SodaStream)"], 
+      method: "Build vodka and fresh lemon juice over ice. Top with ginger beer soda and stir gently." },
+    
+    { id: 76, name: "Appleton Estate Punch", base: "Rum", glass: "Highball Glass", season: "Summer", origin: "Classic 19th-century West Indies rum punch following the traditional planation rule.", 
+      ingredients: ["50 ml (1.7 oz) Appleton Estate Jamaican Rum", "45 ml (1.5 oz) Orange Juice", "45 ml (1.5 oz) Pineapple Juice", "15 ml (0.5 oz) Lemon Juice"], 
+      method: "Shake Appleton rum, orange juice, pineapple juice, and lemon juice with ice. Strain over fresh ice into a highball glass." },
+    
+    { id: 77, name: "Canadian Club Red Bull", base: "Whisky", glass: "Highball Glass", season: "All Year", origin: "Contemporary high-energy whisky serve popular in North American nightlife.", 
+      ingredients: ["60 ml (2 oz) Canadian Club Whisky", "125 ml (4.2 oz) Red Bull Energy Drink"], 
+      method: "Fill a highball glass with ice, add Canadian Club whisky, and top with chilled Red Bull." },
+    
+    { id: 78, name: "Glenfiddich Highball Twist", base: "Whisky", glass: "Highball Glass", season: "Spring", origin: "Light single malt highball designed to highlight Speyside floral notes.", 
+      ingredients: ["60 ml (2 oz) Glenfiddich Single Malt Scotch", "120 ml (4 oz) 7Up (SodaStream)", "Lemon twist"], 
+      method: "Build Glenfiddich in a tall glass with large ice blocks. Top with 7Up and garnish with a lemon twist." },
+    
+    { id: 79, name: "Espolòn Tequila Ginger Mule", base: "Tequila", glass: "Rocks Glass", season: "Summer", origin: "Mexican agave variation of the classic 1940s Moscow Mule highball.", 
+      ingredients: ["50 ml (1.7 oz) Espolòn Tequila Blanco", "20 ml (0.7 oz) Fresh Lemon Juice", "100 ml (3.4 oz) Ginger Beer (SodaStream)"], 
+      method: "Shake tequila and lemon juice with ice. Strain over fresh ice into a rocks glass, and top with ginger beer." },
+    
+    { id: 80, name: "Midori Red Bull Electric Cooler", base: "Liqueur", glass: "Highball Glass", season: "Summer", origin: "Vibrant high-energy nightclub creation popular in international party capitals.", 
+      ingredients: ["30 ml (1 oz) Midori Melon Liqueur", "30 ml (1 oz) Scapegrace Vodka", "125 ml (4.2 oz) Red Bull Energy Drink"], 
+      method: "Build Midori and vodka in an ice-filled highball glass. Top with chilled Red Bull and stir lightly." },
 
-    // 81-90
-    { id: 81, name: "Tanqueray Pink Lemon Fizz", base: "Gin", alcohol: "Tanqueray London Dry Gin, Gordon's Pink", mixers: "Fresh Lemon Juice, Soda Water", glass: "Copa Glass", season: "Summer", origin: "Dual-gin house signature blend marrying London dry juniper structure with sweet pink berry finish.", method: "Shake Tanqueray and Gordon's Pink with lemon juice. Strain over ice and top with soda." },
-    { id: 82, name: "Bacardi Cranberry Breeze", base: "Rum", alcohol: "Bacardi White Rum", mixers: "Cranberry Juice, Pineapple Juice", glass: "Highball Glass", season: "Summer", origin: "Light tropical rum cooler perfected in Caribbean coastal resorts.", method: "Build Bacardi, cranberry juice, and pineapple juice in tall glass with ice. Stir gently." },
-    { id: 83, name: "Smirnoff 57 V-Energy Shock", base: "Vodka", alcohol: "Smirnoff No. 57 (100 Proof)", mixers: "V Energy Drink, Orange Juice", glass: "Highball Glass", season: "All Year", origin: "Intense high-proof power drink combining citrus juices and energy mixers.", method: "Build Smirnoff 57 and orange juice in ice glass. Top with chilled V drink." },
-    { id: 84, name: "Kahlúa White Russian Shake", base: "Liqueur", alcohol: "Kahlúa Coffee Liqueur, Smirnoff No. 21", mixers: "Whole Milk, Simple Syrup", glass: "Rocks Glass", season: "Winter", origin: "Decadent dessert variation of the classic coffee-cream recipe.", method: "Vigorously shake Kahlúa, vodka, milk, and syrup with ice. Strain into ice-filled rocks glass." },
-    { id: 85, name: "Captain Morgan Tropical Punch", base: "Rum", alcohol: "Captain Morgan Black Spiced, Malibu", mixers: "Pineapple Juice, Orange Juice", glass: "Highball Glass", season: "Summer", origin: "Rich tiki-style spiced rum punch designed for summer beach barbecues.", method: "Shake Captain Morgan, Malibu, pineapple juice, and orange juice with ice. Strain into tall glass." },
-    { id: 86, name: "Famous Grouse Cola Highball", base: "Whisky", alcohol: "The Famous Grouse Scotch Whisky", mixers: "Coca-Cola, Fresh Lemon", glass: "Highball Glass", season: "All Year", origin: "Classic British pub highball combining smooth blended Scotch whisky and cola.", method: "Fill tall glass with ice, add Scotch whisky, top with Coca-Cola, squeeze lemon twist." },
-    { id: 87, name: "Galliano Sambuca Lemon Bitters", base: "Liqueur", alcohol: "Galliano Sambuca", mixers: "Fresh Lemon Juice, Angostura Bitters", glass: "Rocks Glass", season: "Winter", origin: "Aromatic Italian digestive twist balancing rich star anise sweetness with herbal bitters.", method: "Shake Sambuca and fresh lemon juice with ice. Strain over ice and float dash of Angostura." },
-    { id: 88, name: "Absolut Vanilla Energy Sparkler", base: "Vodka", alcohol: "Absolut Vanilla Vodka", mixers: "V Energy Drink, Cranberry Juice", glass: "Highball Glass", season: "All Year", origin: "Sweet vanilla energy cocktail created in modern metropolitan cocktail lounges.", method: "Build vanilla vodka and cranberry juice over ice in highball glass. Top with V energy drink." },
-    { id: 89, name: "Scapegrace Dry Martini Twist", base: "Gin", alcohol: "Scapegrace Dry Gin", mixers: "Angostura Bitters, Fresh Lemon Twist", glass: "Coupe Glass", season: "All Year", origin: "Minimalist interpretation of the classic 19th-century dry gin martini.", method: "Stir Scapegrace gin and dash of Angostura bitters with ice until ice cold. Strain into coupe." },
-    { id: 90, name: "Appleton Jamaican Sunrise", base: "Rum", alcohol: "Appleton Estate Jamaican Rum", mixers: "Orange Juice, Cranberry Juice", glass: "Highball Glass", season: "Summer", origin: "Jamaican resort highball featuring aged pot-still rum and vibrant fruit juices.", method: "Build rum and orange juice in ice glass. Drizzle cranberry juice down inside glass for layer." },
+    { id: 81, name: "Tanqueray Pink Lemon Fizz", base: "Gin", glass: "Copa Glass", season: "Summer", origin: "Dual-gin house signature blend marrying London dry juniper structure with sweet pink berry finish.", 
+      ingredients: ["30 ml (1 oz) Tanqueray London Dry Gin", "30 ml (1 oz) Gordon's Premium Pink Gin", "25 ml (0.8 oz) Fresh Lemon Juice", "90 ml (3 oz) Soda Water"], 
+      method: "Shake both gins and lemon juice with ice. Strain over fresh ice in a copa glass and top with sparkling soda water." },
+    
+    { id: 82, name: "Bacardi Cranberry Breeze", base: "Rum", glass: "Highball Glass", season: "Summer", origin: "Light tropical rum cooler perfected in Caribbean coastal resorts.", 
+      ingredients: ["50 ml (1.7 oz) Bacardi White Rum", "90 ml (3 oz) Cranberry Juice", "60 ml (2 oz) Pineapple Juice"], 
+      method: "Build Bacardi, cranberry juice, and pineapple juice in a tall glass with ice. Stir gently." },
+    
+    { id: 83, name: "Smirnoff 57 V-Energy Shock", base: "Vodka", glass: "Highball Glass", season: "All Year", origin: "Intense high-proof power drink combining citrus juices and energy mixers.", 
+      ingredients: ["45 ml (1.5 oz) Smirnoff No. 57 (100 Proof)", "45 ml (1.5 oz) Orange Juice", "100 ml (3.4 oz) V Energy Drink"], 
+      method: "Build Smirnoff 57 and orange juice in an ice glass. Top with chilled V energy drink." },
+    
+    { id: 84, name: "Kahlúa White Russian Shake", base: "Liqueur", glass: "Rocks Glass", season: "Winter", origin: "Decadent dessert variation of the classic coffee-cream recipe.", 
+      ingredients: ["45 ml (1.5 oz) Kahlúa Coffee Liqueur", "30 ml (1 oz) Smirnoff No. 21 Vodka", "45 ml (1.5 oz) Whole Milk", "10 ml (0.3 oz) Simple Syrup"], 
+      method: "Vigorously shake Kahlúa, vodka, milk, and syrup with ice. Strain into an ice-filled rocks glass." },
+    
+    { id: 85, name: "Captain Morgan Tropical Punch", base: "Rum", glass: "Highball Glass", season: "Summer", origin: "Rich tiki-style spiced rum punch designed for summer beach barbecues.", 
+      ingredients: ["30 ml (1 oz) Captain Morgan Black Spiced", "30 ml (1 oz) Malibu Coconut Rum", "60 ml (2 oz) Pineapple Juice", "60 ml (2 oz) Orange Juice"], 
+      method: "Shake Captain Morgan, Malibu, pineapple juice, and orange juice with ice. Strain into a tall glass." },
+    
+    { id: 86, name: "Famous Grouse Cola Highball", base: "Whisky", glass: "Highball Glass", season: "All Year", origin: "Classic British pub highball combining smooth blended Scotch whisky and cola.", 
+      ingredients: ["60 ml (2 oz) The Famous Grouse Scotch Whisky", "120 ml (4 oz) Coca-Cola", "Lemon twist"], 
+      method: "Fill a tall glass with ice, add Scotch whisky, top with Coca-Cola, and squeeze a fresh lemon twist on top." },
+    
+    { id: 87, name: "Galliano Sambuca Lemon Bitters", base: "Liqueur", glass: "Rocks Glass", season: "Winter", origin: "Aromatic Italian digestive twist balancing rich star anise sweetness with herbal bitters.", 
+      ingredients: ["50 ml (1.7 oz) Galliano Sambuca", "25 ml (0.8 oz) Fresh Lemon Juice", "3 dashes Angostura Aromatic Bitters"], 
+      method: "Shake Sambuca and fresh lemon juice with ice. Strain over fresh ice in a rocks glass and float 3 dashes of Angostura bitters." },
+    
+    { id: 88, name: "Absolut Vanilla Energy Sparkler", base: "Vodka", glass: "Highball Glass", season: "All Year", origin: "Sweet vanilla energy cocktail created in modern metropolitan cocktail lounges.", 
+      ingredients: ["50 ml (1.7 oz) Absolut Vanilla Vodka", "60 ml (2 oz) Cranberry Juice", "100 ml (3.4 oz) V Energy Drink"], 
+      method: "Build vanilla vodka and cranberry juice over ice in a highball glass. Top with V energy drink." },
+    
+    { id: 89, name: "Scapegrace Dry Martini Twist", base: "Gin", glass: "Coupe Glass", season: "All Year", origin: "Minimalist interpretation of the classic 19th-century dry gin martini.", 
+      ingredients: ["60 ml (2 oz) Scapegrace Dry Gin", "2 dashes Angostura Aromatic Bitters", "Lemon peel twist"], 
+      method: "Stir Scapegrace gin and Angostura bitters with ice until ice cold. Strain into a chilled coupe and garnish with lemon twist." },
+    
+    { id: 90, name: "Appleton Jamaican Sunrise", base: "Rum", glass: "Highball Glass", season: "Summer", origin: "Jamaican resort highball featuring aged pot-still rum and vibrant fruit juices.", 
+      ingredients: ["50 ml (1.7 oz) Appleton Estate Jamaican Rum", "90 ml (3 oz) Orange Juice", "20 ml (0.7 oz) Cranberry Juice"], 
+      method: "Build rum and orange juice in an ice glass. Drizzle cranberry juice down the inside of the glass for a sunset effect." },
 
-    // 91-100
-    { id: 91, name: "Espolòn Tequila Red Bull", base: "Tequila", alcohol: "Espolòn Tequila Blanco", mixers: "Red Bull Energy Drink, Fresh Lemon", glass: "Highball Glass", season: "Summer", origin: "Modern Latin nightlife cocktail combining 100% agave tequila and energy drink.", method: "Build tequila and fresh lemon juice in ice-filled highball glass. Top with Red Bull." },
-    { id: 92, name: "Midori Ginger Lemonade", base: "Liqueur", alcohol: "Midori Melon Liqueur", mixers: "Ginger Beer (SodaStream), Lemon Juice", glass: "Highball Glass", season: "Summer", origin: "Refreshing 1980s summer punch combining japanese honeydew melon and ginger.", method: "Shake Midori and fresh lemon juice with ice. Strain into ice glass, top with ginger beer." },
-    { id: 93, name: "Tanqueray London Dry Sour", base: "Gin", alcohol: "Tanqueray London Dry Gin", mixers: "Fresh Lemon Juice, Simple Syrup, Bitters", glass: "Rocks Glass", season: "Spring", origin: "19th-century classic sour showcasing dry juniper gin and fresh lemon juice.", method: "Shake Tanqueray gin, fresh lemon juice, and syrup with ice. Strain over ice, add bitters." },
-    { id: 94, name: "Savage Curl White Rum Mojito", base: "Rum", alcohol: "Savage Curl White Rum", mixers: "7Up (SodaStream), Fresh Lemon, Sugar", glass: "Highball Glass", season: "Summer", origin: "Crisp white rum highball adaptation of traditional Cuban mint-lime punch.", method: "Muddle lemon and sugar in glass. Add Savage Curl white rum, ice, top with 7Up, stir." },
-    { id: 95, name: "Canadian Club Cranberry Highball", base: "Whisky", alcohol: "Canadian Club Whisky", mixers: "Cranberry Juice, Soda Water", glass: "Highball Glass", season: "Autumn", origin: "Smooth North American whisky cooler balancing light rye notes with fruit juice.", method: "Build Canadian Club and cranberry juice in ice glass. Top with sparkling soda water." },
-    { id: 96, name: "Baileys Iced Coffee Cream", base: "Liqueur", alcohol: "Baileys Irish Cream, Kahlúa", mixers: "Cold Espresso, Whole Milk", glass: "Highball Glass", season: "Summer / Winter", origin: "Decadent iced coffee treat popular in modern brunch spots.", method: "Shake Baileys, Kahlúa, cold espresso, and milk with ice. Strain into tall glass filled with ice." },
-    { id: 97, name: "Smirnoff 21 Pineapple Cooler", base: "Vodka", alcohol: "Smirnoff No. 21 Vodka", mixers: "Pineapple Juice, 7Up (SodaStream)", glass: "Highball Glass", season: "Summer", origin: "Classic tropical highball popular across Caribbean and Pacific resorts.", method: "Build vodka and pineapple juice over ice in highball glass. Top with 7Up soda." },
-    { id: 98, name: "Gordon's Pink Pineapple Punch", base: "Gin", alcohol: "Gordon's Premium Pink Gin", mixers: "Pineapple Juice, Lemon Juice", glass: "Highball Glass", season: "Summer", origin: "Modern fruity gin punch combining red berry gin and tropical pineapple juice.", method: "Shake Gordon's Pink gin, pineapple juice, and lemon juice with ice. Strain over ice." },
-    { id: 99, name: "Glenfiddich Whisky Ginger", base: "Whisky", alcohol: "Glenfiddich Single Malt Scotch", mixers: "Ginger Beer (SodaStream), Lemon Twist", glass: "Rocks Glass", season: "Autumn", origin: "Refined Speyside malt serve pairing single malt Scotch with spicy ginger beer.", method: "Add Glenfiddich to glass with ice block. Squeeze lemon twist, top with ginger beer, stir." },
-    { id: 100, name: "Ultimate Home Bar House Punch", base: "Rum", alcohol: "Captain Morgan, Appleton Estate, Bacardi", mixers: "Pineapple Juice, Cranberry, Orange, 7Up", glass: "Hurricane / Highball", season: "Summer", origin: "The definitive home bar celebration punch combining spiced, dark, and white rums with all fruit mixers.", method: "Shake all three rums with pineapple juice, orange juice, cranberry juice, and ice. Strain into glass and top with 7Up." }
+    { id: 91, name: "Espolòn Tequila Red Bull", base: "Tequila", glass: "Highball Glass", season: "Summer", origin: "Modern Latin nightlife cocktail combining 100% agave tequila and energy drink.", 
+      ingredients: ["50 ml (1.7 oz) Espolòn Tequila Blanco", "15 ml (0.5 oz) Fresh Lemon Juice", "125 ml (4.2 oz) Red Bull Energy Drink"], 
+      method: "Build tequila and fresh lemon juice in an ice-filled highball glass. Top with chilled Red Bull and stir." },
+    
+    { id: 92, name: "Midori Ginger Lemonade", base: "Liqueur", glass: "Highball Glass", season: "Summer", origin: "Refreshing 1980s summer punch combining japanese honeydew melon and ginger.", 
+      ingredients: ["50 ml (1.7 oz) Midori Melon Liqueur", "20 ml (0.7 oz) Fresh Lemon Juice", "100 ml (3.4 oz) Ginger Beer (SodaStream)"], 
+      method: "Shake Midori and fresh lemon juice with ice. Strain into an ice glass and top with ginger beer." },
+    
+    { id: 93, name: "Tanqueray London Dry Sour", base: "Gin", glass: "Rocks Glass", season: "Spring", origin: "19th-century classic sour showcasing dry juniper gin and fresh lemon juice.", 
+      ingredients: ["60 ml (2 oz) Tanqueray London Dry Gin", "30 ml (1 oz) Fresh Lemon Juice", "20 ml (0.7 oz) Simple Syrup", "2 dashes Angostura Bitters"], 
+      method: "Shake Tanqueray gin, lemon juice, and syrup with ice. Strain over fresh ice in a rocks glass, add bitters." },
+    
+    { id: 94, name: "Savage Curl White Rum Mojito", base: "Rum", glass: "Highball Glass", season: "Summer", origin: "Crisp white rum highball adaptation of traditional Cuban mint-lime punch.", 
+      ingredients: ["60 ml (2 oz) Savage Curl White Rum", "30 ml (1 oz) Fresh Lemon Juice", "20 ml (0.7 oz) Sugar", "90 ml (3 oz) 7Up (SodaStream)"], 
+      method: "Muddle lemon and sugar in a tall glass. Add Savage Curl white rum, ice, top with 7Up, and stir." },
+    
+    { id: 95, name: "Canadian Club Cranberry Highball", base: "Whisky", glass: "Highball Glass", season: "Autumn", origin: "Smooth North American whisky cooler balancing light rye notes with fruit juice.", 
+      ingredients: ["50 ml (1.7 oz) Canadian Club Whisky", "90 ml (3 oz) Cranberry Juice", "60 ml (2 oz) SodaStream Soda Water"], 
+      method: "Build Canadian Club and cranberry juice in an ice glass. Top with sparkling soda water and stir." },
+    
+    { id: 96, name: "Baileys Iced Coffee Cream", base: "Liqueur", glass: "Highball Glass", season: "Summer / Winter", origin: "Decadent iced coffee treat popular in modern brunch spots.", 
+      ingredients: ["45 ml (1.5 oz) Baileys Original Irish Cream", "30 ml (1 oz) Kahlúa Coffee Liqueur", "60 ml (2 oz) Cold Espresso", "45 ml (1.5 oz) Whole Milk"], 
+      method: "Shake Baileys, Kahlúa, cold espresso, and milk with ice. Strain into a tall glass filled with fresh ice." },
+    
+    { id: 97, name: "Smirnoff 21 Pineapple Cooler", base: "Vodka", glass: "Highball Glass", season: "Summer", origin: "Classic tropical highball popular across Caribbean and Pacific resorts.", 
+      ingredients: ["50 ml (1.7 oz) Smirnoff No. 21 Vodka", "90 ml (3 oz) Pineapple Juice", "60 ml (2 oz) 7Up (SodaStream)"], 
+      method: "Build vodka and pineapple juice over ice in a highball glass. Top with 7Up soda and stir gently." },
+    
+    { id: 98, name: "Gordon's Pink Pineapple Punch", base: "Gin", glass: "Highball Glass", season: "Summer", origin: "Modern fruity gin punch combining red berry gin and tropical pineapple juice.", 
+      ingredients: ["50 ml (1.7 oz) Gordon's Premium Pink Gin", "60 ml (2 oz) Pineapple Juice", "20 ml (0.7 oz) Fresh Lemon Juice"], 
+      method: "Shake Gordon's Pink gin, pineapple juice, and lemon juice with ice. Strain over fresh ice into a highball glass." },
+    
+    { id: 99, name: "Glenfiddich Whisky Ginger", base: "Whisky", glass: "Rocks Glass", season: "Autumn", origin: "Refined Speyside malt serve pairing single malt Scotch with spicy ginger beer.", 
+      ingredients: ["60 ml (2 oz) Glenfiddich Single Malt Scotch", "120 ml (4 oz) Ginger Beer (SodaStream)", "Lemon twist"], 
+      method: "Add Glenfiddich to a rocks glass with a large ice block. Squeeze a lemon twist, top with ginger beer, and stir." },
+    
+    { id: 100, name: "Ultimate Home Bar House Punch", base: "Rum", glass: "Hurricane / Highball", season: "Summer", origin: "The definitive home bar celebration punch combining spiced, dark, and white rums with all fruit mixers.", 
+      ingredients: ["20 ml (0.7 oz) Captain Morgan Spiced", "20 ml (0.7 oz) Appleton Estate Rum", "20 ml (0.7 oz) Bacardi White Rum", "45 ml (1.5 oz) Pineapple Juice", "30 ml (1 oz) Orange Juice", "30 ml (1 oz) Cranberry Juice", "45 ml (1.5 oz) 7Up"], 
+      method: "Shake all three rums with pineapple juice, orange juice, cranberry juice, and ice. Strain into a tall glass and top with 7Up." }
 ];
 
 function renderRecipes(filterText = '', spiritFilter = 'ALL', seasonFilter = 'ALL') {
@@ -361,8 +644,7 @@ function renderRecipes(filterText = '', spiritFilter = 'ALL', seasonFilter = 'AL
 
     const filtered = recipes.filter(r => {
         const matchesText = r.name.toLowerCase().includes(filterText.toLowerCase()) || 
-                            r.alcohol.toLowerCase().includes(filterText.toLowerCase()) ||
-                            r.mixers.toLowerCase().includes(filterText.toLowerCase());
+                            r.ingredients.some(i => i.toLowerCase().includes(filterText.toLowerCase()));
         const matchesSpirit = spiritFilter === 'ALL' || r.base === spiritFilter;
         const matchesSeason = seasonFilter === 'ALL' || r.season.includes(seasonFilter);
 
@@ -374,6 +656,9 @@ function renderRecipes(filterText = '', spiritFilter = 'ALL', seasonFilter = 'AL
     filtered.forEach(r => {
         const card = document.createElement('div');
         card.className = 'recipe-card';
+        
+        let ingredientsHTML = r.ingredients.map(ing => `<li>${ing}</li>`).join('');
+
         card.innerHTML = `
             <div>
                 <div class="card-header">
@@ -387,14 +672,10 @@ function renderRecipes(filterText = '', spiritFilter = 'ALL', seasonFilter = 'AL
                 </div>
                 <div class="recipe-origin">"${r.origin}"</div>
                 <div class="recipe-section">
-                    <h4>Alcohol Base</h4>
-                    <p><strong>${r.alcohol}</strong></p>
+                    <h4>Exact Ingredients</h4>
+                    <ul>${ingredientsHTML}</ul>
                 </div>
-                <div class="recipe-section">
-                    <h4>Mixers Needed</h4>
-                    <p>${r.mixers}</p>
-                </div>
-                <div class="recipe-section">
+                <div class="recipe-section" style="margin-top: 10px;">
                     <h4>Method</h4>
                     <p>${r.method}</p>
                 </div>
